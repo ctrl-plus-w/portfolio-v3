@@ -19,6 +19,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'react'],
   rules: {
     semi: ['error', 'always'],
-    '@typescript-eslint/semi': ['error', 'always']
+    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/member-delimiter-style': 'semi'
   }
 };
