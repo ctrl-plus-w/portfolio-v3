@@ -1,6 +1,8 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
 
-export default function Document() {
+import type { ReactElement } from 'react';
+
+const Document = (): ReactElement => {
   return (
     <Html lang="en">
       <Head />
@@ -9,5 +11,7 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  )
-}
+  );
+};
+
+export default Document;
