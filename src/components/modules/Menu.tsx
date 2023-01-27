@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import type { ReactElement } from 'react';
 
-import MENU from '@config/menu.json';
+import MENU from '@config/menu';
 
 interface IProps {
   className?: string;
