@@ -22,6 +22,7 @@
       "@icon/*": ["./public/icons/*"],
       "@image/*": ["./public/images/*"],
       "@config/*": ["./src/config/*"],
+      "@helper/*": ["./src/helpers/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./.eslintrc.js", "./next.config.js", "postcss.config.js", "tailwind.config.js"],
