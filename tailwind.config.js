@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   presets: [],
   darkMode: 'media', // or 'class'
   theme: {
@@ -13,6 +13,12 @@ module.exports = {
     },
     supports: {},
     colors: ({ colors }) => ({
+      primary: '#1C1604',
+      primaryLight: '#352E17',
+      secondaryBright: '#F5EDDA',
+      secondary: '#FFFCF5',
+      secondaryLight: '#A79F8C',
+      ternary: '#C4840E',
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
