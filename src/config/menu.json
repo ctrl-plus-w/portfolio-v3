@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Accueil",
+    "path": "/"
+  },
+  {
+    "name": "Mon travail",
+    "path": "/work"
+  },
+  {
+    "name": "Me contacter",
+    "path": "/contact"
+  }
+]

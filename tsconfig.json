@@ -16,12 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
       "@style/*": ["./src/styles/*"],
       "@element/*": ["./src/components/elements/*"],
       "@module/*": ["./src/components/modules/*"],
       "@icon/*": ["./public/icons/*"],
       "@image/*": ["./public/images/*"],
+      "@config/*": ["./src/config/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./.eslintrc.js", "./next.config.js", "postcss.config.js", "tailwind.config.js"],
