@@ -6,7 +6,7 @@ type HeaderType = 1 | 2 | 3 | 4;
 
 interface IProps {
   type: HeaderType;
-  className: string;
+  className?: string;
   children?: ReactNode;
 }
 
