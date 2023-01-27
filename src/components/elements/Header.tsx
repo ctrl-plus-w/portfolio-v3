@@ -14,23 +14,23 @@ const Header = ({ type, className, children }: IProps): ReactElement => {
   switch (type) {
     case 1:
       return (
-        <h1 className={clsx('text-[64px] lg:text-[78px]', className)}>
+        <h1 className={clsx(['text-[64px] lg:text-[78px]', className])}>
           {children}
         </h1>
       );
 
     case 2:
       return (
-        <h2 className={clsx('text-[32px] lg:text-[38px]', className)}>
+        <h2 className={clsx(['text-[32px] lg:text-[38px]', className])}>
           {children}
         </h2>
       );
 
     case 3:
-      return <h3 className={clsx('text-[26px]', className)}>{children}</h3>;
+      return <h3 className={clsx(['text-[26px]', className])}>{children}</h3>;
 
     default:
-      return <h4 className={clsx('text-[22px]')}>{children}</h4>;
+      return <h4 className={clsx(['text-[22px]', className])}>{children}</h4>;
   }
 };
 
