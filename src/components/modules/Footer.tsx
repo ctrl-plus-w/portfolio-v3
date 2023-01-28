@@ -34,30 +34,26 @@ const Footer = ({ className }: IProps): ReactElement => {
     >
       <div className="flex flex-row flex-wrap justify-between gap-x-16 gap-y-16 mb-14">
         {FOOTER.map((section) => (
-          <nav className="flex flex-col gap-3">
+          <nav className="flex flex-col gap-3" key={section.name}>
             <Header type={4} className="text-primary font-mono mb-[10px]">
               {section.name}
             </Header>
 
-            {section.links.map((link) =>
-              link.relative ? (
-                <a
-                  href={origin + link.path}
-                  onClick={onClickRelativePath(link.path)}
-                  className="text-primaryLight"
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <a
-                  href={link.path}
-                  target="_blank"
-                  className="text-primaryLight"
-                >
-                  {link.name}
-                </a>
-              )
-            )}
+            {section.links.map((link, index) => {
+              const props: { [key: string]: any } = {
+                className: 'text-primaryLight',
+                key: section.name + index,
+                href: link.path
+              };
+
+              if (link.relative) {
+                props.onClick = onClickRelativePath(link.path);
+              } else {
+                props.target = '_blank';
+              }
+
+              return <a {...props}>{link.name}</a>;
+            })}
           </nav>
         ))}
       </div>
