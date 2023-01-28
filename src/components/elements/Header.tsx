@@ -30,7 +30,11 @@ const Header = ({ type, className, children }: IProps): ReactElement => {
       return <h3 className={clsx(['text-[26px]', className])}>{children}</h3>;
 
     default:
-      return <h4 className={clsx(['text-[22px]', className])}>{children}</h4>;
+      return (
+        <h4 className={clsx(['text-[22px] font-medium', className])}>
+          {children}
+        </h4>
+      );
   }
 };
 
