@@ -14,8 +14,6 @@ const Home = (): ReactElement => {
   return (
     <>
       <section className="flex flex-col items-center min-h-screen p-8">
-        <Menu className="self-end" />
-
         <ParticleAnimation className="w-80 h-80" />
 
         <Header type={1} className="font-mono text-primary mt-8">
