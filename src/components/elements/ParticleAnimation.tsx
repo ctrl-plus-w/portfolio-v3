@@ -7,12 +7,15 @@ import clsx from 'clsx';
 import ParticleJS from '@class/ParticleJS';
 
 import particleJSConfig from '@config/particleJSConfig';
+import useBreakpoints from '@hook/useBreakpoints';
 
 interface IProps {
   className?: string;
 }
 
 const ParticleAnimation = ({ className }: IProps): ReactElement => {
+  const { greaterThan } = useBreakpoints();
+
   const particleJS = useRef<ParticleJS | null>();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -46,6 +49,13 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
         containerRef.current.getBoundingClientRect().width;
       canvasRef.current.height =
         containerRef.current.getBoundingClientRect().height;
+
+      if (
+        greaterThan('lg') &&
+        particleJSConfig.particle?.amount !== undefined
+      ) {
+        particleJSConfig.particle.amount *= 1.3;
+      }
 
       particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
