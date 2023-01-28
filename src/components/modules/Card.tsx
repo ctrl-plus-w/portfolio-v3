@@ -7,6 +7,8 @@ import clsx from 'clsx';
 
 import Header from '@element/Header';
 
+import useBreakpoints from '@hook/useBreakpoints';
+
 import { renderIf } from '@helper/react';
 
 import chevronDown from '../../../public/icons/chevron-down-sharp.svg';
@@ -33,6 +35,8 @@ const Card = ({
   className,
   dark = false
 }: IProps): ReactElement => {
+  const { greaterThan } = useBreakpoints();
+
   const [opened, setOpened] = useState(false);
 
   return (
@@ -59,7 +63,7 @@ const Card = ({
       </p>
 
       {renderIf(
-        opened && options != null && options.length > 0,
+        greaterThan('lg') || (opened && options != null && options.length > 0),
         (options || []).map(({ name, checked }, index) => (
           <div
             className={clsx([
@@ -80,7 +84,7 @@ const Card = ({
       )}
 
       {renderIf(
-        options != null && options.length > 0,
+        !greaterThan('lg') && options != null && options.length > 0,
         <button
           className="flex items-center gap-2 mt-7"
           onClick={() => setOpened(!opened)}

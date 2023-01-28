@@ -1,9 +1,9 @@
 import type { ReactElement } from 'react';
 
+import Image from 'next/image';
 import clsx from 'clsx';
 
 import Card from '@module/Card';
-import Menu from '@module/Menu';
 
 import ParticleAnimation from '@element/ParticleAnimation';
 import AnchorButton from '@element/AnchorButton';
@@ -13,25 +13,30 @@ import Header from '@element/Header';
 const Home = (): ReactElement => {
   return (
     <>
-      <section className="flex flex-col items-center min-h-screen p-8">
-        <ParticleAnimation className="w-80 h-80" />
+      <section className="flex flex-col lg:flex-row items-center justify-around min-h-screen p-8 lg:px-32 lg:py-16">
+        <ParticleAnimation className="w-80 h-80 lg:w-96 lg:h-96" />
 
-        <Header type={1} className="font-mono text-primary mt-8">
-          Lukas
-        </Header>
-        <Separator size="big" />
+        <div className="flex flex-col items-center lg:items-end">
+          <Header type={1} className="font-mono text-primary mt-8">
+            Lukas
+          </Header>
+          <Separator size="big" />
 
-        <p className="text-primaryLight text-center mt-12">
-          Développeur web et designer indépendant <br /> Création d’applications
-          web complexes
-        </p>
+          <p className="text-primaryLight text-center mt-12">
+            Développeur web et designer indépendant <br /> Création
+            d’applications web complexes
+          </p>
 
-        <AnchorButton href="/contact" className="mt-16">
-          Se rencontrer
-        </AnchorButton>
+          <AnchorButton href="/contact" className="mt-16">
+            Se rencontrer
+          </AnchorButton>
+        </div>
       </section>
 
-      <section className="flex flex-col p-8" id="accompaniement">
+      <section
+        className="flex flex-col p-8 lg:px-32 lg:py-16"
+        id="accompaniement"
+      >
         <Header type={2} className="font-mono text-primary">
           Votre accompagnement
         </Header>
@@ -40,14 +45,14 @@ const Home = (): ReactElement => {
         <article className="mt-14 pb-8">
           <Header type={4}>Entretiens préalable</Header>
 
-          <p className="text-primaryLight w-[80%]">
+          <p className="text-primaryLight w-[80%] md:w-80">
             Une première rencontre afin d’accorder vos attentes avec la solution
             que je vous fournirai.
           </p>
 
           <div
             className={clsx([
-              'absolute top-1/3 left-[80%]',
+              'absolute top-1/3 left-[80%] md:left-[21rem]',
               'transform -translate-x-[2px] -translate-y-[1.375px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -55,7 +60,7 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute bottom-[5%] right-[5%]',
+              'absolute bottom-[5%] right-[5%] md:right-10',
               'transform translate-x-[1.375px] translate-y-[2px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -63,7 +68,7 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute right-[5%] bottom-[5%] left-[80%] top-1/3',
+              'absolute right-[5%] bottom-[5%] left-[80%] top-1/3 md:left-[21rem] md:right-10',
               'border-t-[1.25px] border-r-[1.25px] border-ternary rounded-tr-xl'
             ])}
           ></div>
@@ -72,14 +77,14 @@ const Home = (): ReactElement => {
         <article className="mt-2 pb-8">
           <Header type={4}>Le devis</Header>
 
-          <p className="text-primaryLight text-right w-[80%]">
+          <p className="text-primaryLight text-right w-[80%] md:w-80">
             Création d’un cahier des charges en accord avec vos souhaits afin de
             remplir complètement vos attentes.
           </p>
 
           <div
             className={clsx([
-              'absolute top-1/3 right-[80%]',
+              'absolute top-1/3 right-[80%] md:right-[21rem]',
               'transform translate-x-[2px] -translate-y-[1.375px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -87,7 +92,7 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute bottom-[5%] left-[5%]',
+              'absolute bottom-[5%] left-[5%] md:left-10',
               'transform -translate-x-[1.375px] translate-y-[2px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -95,7 +100,7 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute right-[80%] bottom-[5%] left-[5%] top-1/3',
+              'absolute right-[80%] bottom-[5%] left-[5%] top-1/3 md:left-10 md:right-[21rem]',
               'border-t-[1.25px] border-l-[1.25px] border-ternary rounded-tl-xl'
             ])}
           ></div>
@@ -104,7 +109,7 @@ const Home = (): ReactElement => {
         <article className="my-2">
           <Header type={4}>La conception</Header>
 
-          <p className="text-primaryLight w-[80%]">
+          <p className="text-primaryLight w-[80%] md:w-80">
             Développement de votre solution avec un suivi permanent de
             l’avancement pour éviter les erreurs.
           </p>
@@ -113,14 +118,14 @@ const Home = (): ReactElement => {
         <article className="pt-8">
           <Header type={4}>Le suivi</Header>
 
-          <p className="text-primaryLight text-right w-[80%]">
+          <p className="text-primaryLight text-right w-[80%] md:w-80">
             Vous avez besoin de révisions où de modifications après la
             finalisation du développement. Le suivi est la pour ça.
           </p>
 
           <div
             className={clsx([
-              'absolute top-[5%] left-[5%]',
+              'absolute top-[5%] left-[5%] md:left-10',
               'transform -translate-y-[2px] -translate-x-[1.375px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -128,7 +133,7 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute bottom-1/3 right-[80%]',
+              'absolute bottom-1/3 right-[80%] md:right-[21rem]',
               'transform translate-y-[1.375px] translate-x-[2px]',
               'h-1 w-1 bg-ternary rounded-full'
             ])}
@@ -136,93 +141,97 @@ const Home = (): ReactElement => {
 
           <div
             className={clsx([
-              'absolute right-[80%] top-[5%] left-[5%] bottom-1/3',
+              'absolute right-[80%] top-[5%] left-[5%] bottom-1/3 md:left-10 md:right-[21rem]',
               'border-b-[1.25px] border-l-[1.25px] border-ternary rounded-bl-xl'
             ])}
           ></div>
         </article>
       </section>
 
-      <section className="flex flex-col items-end mt-16 p-8">
-        <Header type={2}>Les offres</Header>
+      <section className="flex flex-col items-end mt-16 p-8 lg:px-32 lg:py-16">
+        <Header type={2} className="font-mono text-primary">
+          Les offres
+        </Header>
         <Separator size="normal" />
 
-        <Card
-          title="Site simple"
-          description="Besoin d'un site pour présenter vôtre commerce ou vos services. Cette solution est pour vous."
-          options={[
-            {
-              name: 'Design responsive',
-              checked: true
-            },
-            {
-              name: 'Accesibilité',
-              checked: true
-            },
-            {
-              name: 'Formulaire de contact',
-              checked: true
-            },
+        <div className="flex flex-col lg:flex-row lg:mt-14">
+          <Card
+            title="Site simple"
+            description="Besoin d'un site pour présenter vôtre commerce ou vos services. Cette solution est pour vous."
+            options={[
+              {
+                name: 'Design responsive',
+                checked: true
+              },
+              {
+                name: 'Accesibilité',
+                checked: true
+              },
+              {
+                name: 'Formulaire de contact',
+                checked: true
+              },
 
-            {
-              name: "Espace d'administration",
-              checked: false
-            },
-            {
-              name: 'Pages dynamique',
-              checked: false
-            },
-            {
-              name: 'Outils de gestion',
-              checked: false
-            }
-          ]}
-          className="mt-14"
-        />
+              {
+                name: "Espace d'administration",
+                checked: false
+              },
+              {
+                name: 'Pages dynamique',
+                checked: false
+              },
+              {
+                name: 'Outils de gestion',
+                checked: false
+              }
+            ]}
+            className="mt-14 lg:mt-0"
+          />
 
-        <Card
-          title="Site complexe"
-          description="Développement d'une application web, un outils interactif portable et hébergé."
-          options={[
-            {
-              name: 'Design responsive',
-              checked: true
-            },
-            {
-              name: 'Accesibilité',
-              checked: true
-            },
-            {
-              name: 'Formulaire de contact',
-              checked: true
-            },
+          <Card
+            title="Site complexe"
+            description="Développement d'une application web, un outils interactif portable et hébergé."
+            options={[
+              {
+                name: 'Design responsive',
+                checked: true
+              },
+              {
+                name: 'Accesibilité',
+                checked: true
+              },
+              {
+                name: 'Formulaire de contact',
+                checked: true
+              },
 
-            {
-              name: "Espace d'administration",
-              checked: true
-            },
-            {
-              name: 'Pages dynamique',
-              checked: true
-            },
-            {
-              name: 'Outils de gestion',
-              checked: true
-            }
-          ]}
-          className="mt-10"
-        />
+              {
+                name: "Espace d'administration",
+                checked: true
+              },
+              {
+                name: 'Pages dynamique',
+                checked: true
+              },
+              {
+                name: 'Outils de gestion',
+                checked: true
+              }
+            ]}
+            className="mt-10 lg:mt-0"
+          />
 
-        <Card
-          title="SAV"
-          description="Accompagnement et révision après le projet."
-          className="mt-10"
-          dark
-        />
+          <Card
+            title="SAV"
+            description="Accompagnement et révision après le projet."
+            className="mt-10 lg:mt-0"
+            dark
+          />
+        </div>
       </section>
 
       <section className="mt-16 mb-11 flex flex-col items-center">
-        <p className="text-primary text-2xl font-medium text-center">
+        <p className="text-primary text-2xl font-medium text-center lg:max-w-xl">
           Une idée en tête ? Besoin d’aide pour vôtre transition digitale ?
         </p>
 
