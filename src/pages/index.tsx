@@ -1,27 +1,20 @@
 import type { ReactElement } from 'react';
 
-import Image from 'next/image';
 import clsx from 'clsx';
 
 import Card from '@module/Card';
+import Menu from '@module/Menu';
 
 import ParticleAnimation from '@element/ParticleAnimation';
 import AnchorButton from '@element/AnchorButton';
-import AreaButton from '@element/AreaButton';
 import Separator from '@element/Separator';
 import Header from '@element/Header';
 
-import menu from '../../public/icons/menu.svg';
-
 const Home = (): ReactElement => {
-  const openMenu = () => {};
-
   return (
     <>
       <section className="flex flex-col items-center min-h-screen p-8">
-        <AreaButton onClick={openMenu} className="self-end">
-          <Image src={menu} alt="Menu Icon" height={32} width={32} />
-        </AreaButton>
+        <Menu className="self-end" />
 
         <ParticleAnimation className="w-80 h-80" />
 
