@@ -1,6 +1,9 @@
 import type { ReactElement } from 'react';
 
 import Image from 'next/image';
+import clsx from 'clsx';
+
+import Card from '@module/Card';
 
 import ParticleAnimation from '@element/ParticleAnimation';
 import AnchorButton from '@element/AnchorButton';
@@ -9,7 +12,6 @@ import Separator from '@element/Separator';
 import Header from '@element/Header';
 
 import menu from '../../public/icons/menu.svg';
-import clsx from 'clsx';
 
 const Home = (): ReactElement => {
   const openMenu = () => {};
@@ -148,6 +150,84 @@ const Home = (): ReactElement => {
             ])}
           ></div>
         </article>
+      </section>
+
+      <section className="flex flex-col items-end mt-16 p-8">
+        <Header type={2}>Les offres</Header>
+        <Separator size="normal" />
+
+        <Card
+          title="Site simple"
+          description="Besoin d'un site pour présenter vôtre commerce ou vos services. Cette solution est pour vous."
+          options={[
+            {
+              name: 'Design responsive',
+              checked: true
+            },
+            {
+              name: 'Accesibilité',
+              checked: true
+            },
+            {
+              name: 'Formulaire de contact',
+              checked: true
+            },
+
+            {
+              name: "Espace d'administration",
+              checked: false
+            },
+            {
+              name: 'Pages dynamique',
+              checked: false
+            },
+            {
+              name: 'Outils de gestion',
+              checked: false
+            }
+          ]}
+          className="mt-14"
+        />
+
+        <Card
+          title="Site complexe"
+          description="Développement d'une application web, un outils interactif portable et hébergé."
+          options={[
+            {
+              name: 'Design responsive',
+              checked: true
+            },
+            {
+              name: 'Accesibilité',
+              checked: true
+            },
+            {
+              name: 'Formulaire de contact',
+              checked: true
+            },
+
+            {
+              name: "Espace d'administration",
+              checked: true
+            },
+            {
+              name: 'Pages dynamique',
+              checked: true
+            },
+            {
+              name: 'Outils de gestion',
+              checked: true
+            }
+          ]}
+          className="mt-10"
+        />
+
+        <Card
+          title="SAV"
+          description="Accompagnement et révision après le projet."
+          className="mt-10"
+          dark
+        />
       </section>
     </>
   );
