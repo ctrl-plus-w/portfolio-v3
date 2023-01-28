@@ -9,6 +9,10 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+  html {
+    @apply bg-secondary;
+  }
+
   html,
   body,
   #__next {
