@@ -24,6 +24,7 @@
       "@config/*": ["./src/config/*"],
       "@helper/*": ["./src/helpers/*"],
       "@class/*": ["./src/classes/*"],
+      "@hook/*": ["./src/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./.eslintrc.js", "./next.config.js", "postcss.config.js", "tailwind.config.js"],
