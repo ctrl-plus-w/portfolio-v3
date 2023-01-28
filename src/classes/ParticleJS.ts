@@ -125,7 +125,7 @@ class ParticleJS {
   drawParticle(particle: Particle, _i: number) {
     if (!this.context) return;
 
-    this.context.fillStyle = `rgba(0, 0, 0, ${particle.opacity})`;
+    this.context.fillStyle = `rgba(28, 22, 4, ${particle.opacity})`;
 
     this.context.beginPath();
     this.context.arc(
