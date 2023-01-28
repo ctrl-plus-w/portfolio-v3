@@ -7,10 +7,10 @@ interface IAdditionalConfig {
 const particleJSConfig: IConfig & IAdditionalConfig = {
   fps: 120,
   particle: {
-    minSize: 3,
-    size: 13,
-    amount: 30,
-    speed: 5
+    minSize: 4,
+    size: 11,
+    amount: 40,
+    speed: 4
   },
   attract: {
     distance: 300,
