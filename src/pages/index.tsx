@@ -229,6 +229,24 @@ const Home = (): ReactElement => {
           dark
         />
       </section>
+
+      <section className="mt-16 mb-11 flex flex-col items-center">
+        <p className="text-primary text-2xl font-medium text-center">
+          Une idée en tête ? Besoin d’aide pour vôtre transition digitale ?
+        </p>
+
+        <div className="relative my-8 h-16 w-[1.25px] bg-primary">
+          <div className="absolute -top-[2px] -left-[1.375px] w-1 h-1 rounded-full bg-primary transform"></div>
+          <div className="absolute -bottom-[2px] -left-[1.375px] w-1 h-1 rounded-full bg-primary transform"></div>
+        </div>
+
+        <a
+          href="/contact"
+          className="block rounded-xl bg-secondaryBright px-7 py-3 font-mono text-xl"
+        >
+          Se rencontrer
+        </a>
+      </section>
     </>
   );
 };
