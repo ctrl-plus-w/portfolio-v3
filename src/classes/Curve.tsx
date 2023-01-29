@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react';
+
 import Vector from '@class/Vector';
 import Color from '@class/Color';
 
@@ -56,8 +58,17 @@ class Curve {
     return `
       <path
         d="M${this.p0.toString()} C${this.p0Drag.toString()} ${this.p1Drag1.toString()} ${this.p1.toString()} C${this.p1Drag2.toString()} ${this.p2Drag.toString()} ${this.p2.toString()}"
-        stroke="${this.color}"
+        stroke="${this.color.toString()}"
       />`;
+  }
+
+  getReactPath(): ReactElement {
+    return (
+      <path
+        d={`M${this.p0.toString()} C${this.p0Drag.toString()} ${this.p1Drag1.toString()} ${this.p1.toString()} C${this.p1Drag2.toString()} ${this.p2Drag.toString()} ${this.p2.toString()}`}
+        stroke={this.color.toString()}
+      />
+    );
   }
 
   toSvg(): string {
@@ -85,6 +96,29 @@ class Curve {
         ${curve2.getPath()}
       </svg>
       `;
+  }
+
+  static reactCombinePaths(curve1: Curve, curve2: Curve): ReactElement {
+    if (curve1.width !== curve2.width || curve1.height !== curve2.height)
+      console.warn(
+        "Warning : Combining curves that doesn't have the same size."
+      );
+
+    const width = Math.max(curve1.width, curve2.width);
+    const height = Math.max(curve1.height, curve2.height);
+
+    return (
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {curve1.getReactPath()}
+        {curve2.getReactPath()}
+      </svg>
+    );
   }
 }
 
