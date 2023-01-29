@@ -11,6 +11,17 @@ class Vector {
   }
 
   /**
+   * Get the vector coordinates as string
+   * @param parenthesis Whether the vector coordinates will be wrapped in parenthesis
+   * @param sep The separator of the coordinate
+   * @returns A string
+   */
+  toString(parenthesis = false, sep = ' ') {
+    const content = `${this.x}${sep}${this.y}`;
+    return parenthesis ? `(${content})` : content;
+  }
+
+  /**
    * Make the sum of two vectors
    * @param v1 Vector 1
    * @param v2 Vector 2
