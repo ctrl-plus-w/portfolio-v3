@@ -13,10 +13,18 @@
     @apply bg-secondary;
   }
 
-  html,
+  /* html,
   body,
   #__next {
     height: 100%;
+  } */
+
+  body {
+    min-height: 100vh;
+  }
+
+  #__next {
+    position: relative;
   }
 }
 
