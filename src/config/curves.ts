@@ -81,3 +81,29 @@ export const Curve6 = new Curve(
   new Vector(0, 925),
   CURVE_COLOR
 );
+
+export const Curve7 = new Curve(
+  593,
+  372,
+  new Vector(110, 290),
+  new Vector(137, 248),
+  new Vector(236, 153),
+  new Vector(410, 107),
+  new Vector(504, 82),
+  new Vector(560, 40),
+  new Vector(592, 0),
+  CURVE_COLOR
+);
+
+export const Curve8 = new Curve(
+  593,
+  372,
+  new Vector(0, 372),
+  new Vector(28, 372),
+  new Vector(120, 343),
+  new Vector(268, 186),
+  new Vector(360, 88),
+  new Vector(486, 40),
+  new Vector(593, 19),
+  CURVE_COLOR
+);
