@@ -52,7 +52,7 @@ const Contact = (): ReactElement => {
 
   return (
     <>
-      <section className="p-8 pt-32 h-screen">
+      <section className="p-8 pt-32 lg:px-32 lg:pt-48 h-screen">
         <Header type={1} className="font-mono text-primary">
           Me contacter
         </Header>
@@ -64,34 +64,36 @@ const Contact = (): ReactElement => {
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-6 mt-8">
-          <input
-            type="text"
-            className={clsx([
-              'p-2 mb-px border-b border-b-primary bg-transparent',
-              'focus:border-b-2 focus:outline-none focus:mb-0'
-            ])}
-            onChange={onChange(setName)}
-            value={name}
-            placeholder="Nom"
-            required
-          />
+          <div className="flex flex-col gap-6 lg:flex-row lg:max-w-3xl">
+            <input
+              type="text"
+              className={clsx([
+                'w-full p-2 mb-px border-b border-b-primary bg-transparent',
+                'focus:border-b-2 focus:outline-none focus:mb-0'
+              ])}
+              onChange={onChange(setName)}
+              value={name}
+              placeholder="Nom"
+              required
+            />
 
-          <input
-            type="email"
-            className={clsx([
-              'p-2 mb-px border-b border-b-primary bg-transparent',
-              'focus:border-b-2 focus:outline-none focus:mb-0'
-            ])}
-            onChange={onChange(setMail)}
-            value={mail}
-            placeholder="Email"
-            required
-          />
+            <input
+              type="email"
+              className={clsx([
+                'w-full p-2 mb-px border-b border-b-primary bg-transparent',
+                'focus:border-b-2 focus:outline-none focus:mb-0'
+              ])}
+              onChange={onChange(setMail)}
+              value={mail}
+              placeholder="Email"
+              required
+            />
+          </div>
 
           <textarea
             className={clsx([
               'p-2 mb-px border-b border-b-primary bg-transparent',
-              'focus:border-b-2 focus:outline-none focus:mb-0'
+              'focus:border-b-2 focus:outline-none focus:mb-0 lg:max-w-3xl'
             ])}
             onChange={onChange(setMessage)}
             value={message}
@@ -102,7 +104,7 @@ const Contact = (): ReactElement => {
 
           <button
             type="submit"
-            className="self-end text-xl font-mono border-b border-primary mt-12"
+            className="self-end lg:self-start text-xl font-mono border-b border-primary mt-12"
           >
             {buttonText}
           </button>
