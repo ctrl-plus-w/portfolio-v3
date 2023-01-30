@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import Image from 'next/image';
+import Head from 'next/head';
 import clsx from 'clsx';
 
 import Card from '@module/Card';
@@ -13,6 +13,14 @@ import Header from '@element/Header';
 const Home = (): ReactElement => {
   return (
     <>
+      <Head>
+        <title>Lukas Laudrain - Création d'applications web</title>
+        <meta
+          name="description"
+          content="Création de sites web et d'applications web en Loire-Atlantique et en Maine-Et-Loire."
+        />
+      </Head>
+
       <section className="flex flex-col lg:flex-row items-center justify-around min-h-screen p-8 lg:px-32 lg:py-16">
         <ParticleAnimation className="w-80 h-80 lg:w-96 lg:h-96" />
 
