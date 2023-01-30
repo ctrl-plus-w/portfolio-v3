@@ -1,7 +1,11 @@
-import { ReactElement, ReactNode, useEffect } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 
 import Footer from '@module/Footer';
 import Menu from '@module/Menu';
+
+import useBreakpoints from '@hook/useBreakpoints';
+
+import { renderIf } from '@helper/react';
 
 import Curve from '@class/Curve';
 
@@ -22,6 +26,8 @@ interface IProps {
 }
 
 const Layout = ({ children }: IProps): ReactElement => {
+  const { greaterThan } = useBreakpoints();
+
   return (
     <>
       <div className="absolute inset-0 h-full -z-10 overflow-hidden">
@@ -33,13 +39,18 @@ const Layout = ({ children }: IProps): ReactElement => {
           {Curve.reactCombinePaths(Curve3, Curve4)}
         </div>
 
-        <div className="absolute top-[110vh] -left-18 md:left-0 md:transform md:scale-150 md:origin-top-left">
-          {Curve.reactCombinePaths(Curve5, Curve6)}
-        </div>
+        {renderIf(
+          !greaterThan('lg'),
+          <>
+            <div className="absolute top-[110vh] -left-18 md:left-0 md:transform md:scale-150 md:origin-top-left">
+              {Curve.reactCombinePaths(Curve5, Curve6)}
+            </div>
 
-        <div className="absolute bottom-32 right-0 md:transform md:scale-150 md:origin-bottom-right">
-          {Curve.reactCombinePaths(Curve7, Curve8)}
-        </div>
+            <div className="absolute bottom-32 right-0 md:transform md:scale-150 md:origin-bottom-right">
+              {Curve.reactCombinePaths(Curve7, Curve8)}
+            </div>
+          </>
+        )}
       </div>
 
       <Menu />
