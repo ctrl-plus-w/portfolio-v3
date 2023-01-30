@@ -40,7 +40,7 @@ const Menu = ({ className }: IProps): ReactElement => {
             href={page.path}
             className={clsx(
               'text-ternary font-medium uppercase',
-              !router.pathname.startsWith(page.path) && 'opacity-50'
+              router.pathname !== page.path && 'opacity-50'
             )}
           >
             {page.name}
