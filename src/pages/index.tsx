@@ -154,7 +154,7 @@ const Home = (): ReactElement => {
         </Header>
         <Separator size="normal" />
 
-        <div className="flex flex-col lg:flex-row lg:mt-14">
+        <div className="flex flex-col gap-x-16 lg:flex-row lg:mt-14 w-full">
           <Card
             title="Site simple"
             description="Besoin d'un site pour présenter vôtre commerce ou vos services. Cette solution est pour vous."
@@ -185,7 +185,7 @@ const Home = (): ReactElement => {
                 checked: false
               }
             ]}
-            className="mt-14 lg:mt-0"
+            className="flex-1 mt-14 lg:mt-0"
           />
 
           <Card
@@ -218,13 +218,13 @@ const Home = (): ReactElement => {
                 checked: true
               }
             ]}
-            className="mt-10 lg:mt-0"
+            className="flex-1 mt-10 lg:mt-0"
           />
 
           <Card
             title="SAV"
             description="Accompagnement et révision après le projet."
-            className="mt-10 lg:mt-0"
+            className="flex-1 mt-10 lg:mt-0"
             dark
           />
         </div>
