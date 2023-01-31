@@ -66,6 +66,13 @@ class ParticleJS {
   }
 
   /**
+   * Clear the class
+   */
+  clear() {
+    this.particles = [];
+  }
+
+  /**
    * Animation Frame Tick
    */
   tick() {
@@ -165,6 +172,7 @@ class ParticleJS {
    * Generate the particles
    */
   generateParticles() {
+    console.log('generating particles');
     for (let i = 0; i < this.particleConfig.amount; i++) {
       const randomDist =
         Math.random() * (this.width / 2 - this.particleConfig.size);

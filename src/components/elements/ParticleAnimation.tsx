@@ -63,6 +63,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     frameRef.current = window.requestAnimationFrame(render);
 
     return () => {
+      particleJS.current?.clear();
+
       if (frameRef.current != null)
         window.cancelAnimationFrame(frameRef.current);
     };
