@@ -18,7 +18,7 @@ const Separator = ({
   return (
     <div
       className={clsx([
-        'h-1 bg-primary',
+        'separator h-1 bg-primary',
         size == 'big' && 'w-16',
         size == 'normal' && 'w-12',
         !noMargin && 'mt-2',
