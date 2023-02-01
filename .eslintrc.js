@@ -20,6 +20,6 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     '@typescript-eslint/semi': ['error', 'always'],
-    '@typescript-eslint/member-delimiter-style': 'semi'
+    '@typescript-eslint/member-delimiter-style': ['error', 'semi']
   }
 };
