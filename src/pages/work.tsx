@@ -1,23 +1,33 @@
 import Image from 'next/image';
+import Head from 'next/head';
+import clsx from 'clsx';
+
+import type { ReactElement } from 'react';
 
 import Header from '@element/Header';
 import Separator from '@element/Separator';
 
-import type { ReactElement } from 'react';
+
+import useBreakpoints from '@hook/useBreakpoints';
+
+import { renderIf } from '@helper/react';
 
 import arrowDown from '../../public/icons/scroll-button.svg';
 
 import appExampleImage1 from '../../public/images/app_example_1.png';
 import appExampleImage2 from '../../public/images/app_example_2.png';
 import appExampleImage3 from '../../public/images/app_example_3.png';
-import useBreakpoints from '@hook/useBreakpoints';
-import { renderIf } from '@helper/react';
 
 const Work = (): ReactElement => {
   const { greaterThan } = useBreakpoints();
 
   return (
     <>
+      <Head>
+        <title>Lukas Laudrain - Mon travail</title>
+        <meta name="description" content="Création de sites web et d'applications web. Liste non-exhaustive des travaux et projets que j'ai réalisé." />
+      </Head>
+
       <section className="flex flex-col h-screen px-8 pt-32 pb-16 lg:px-32 lg:py-0 lg:justify-center">
         <Header type={1} className="font-mono text-primary">
           Mon travail
@@ -75,14 +85,19 @@ const Work = (): ReactElement => {
         </div>
       </section>
 
-      <section className="flex flex-col items-end px-8 py-16 lg:py-32 md:px-32 2xl:px-64">
+      <section className="flex flex-col items-end justify px-8 py-16 lg:py-32 md:px-32 2xl:px-64">
         <Header type={2} className="font-mono">
           Gestion de QCM
         </Header>
         <Separator size="normal" />
 
-        <div className="flex flex-col justify-between items-center lg:items-start lg:justify-end lg:flex-row-reverse lg:w-full">
-          <p className="text-primaryLight mt-16 text-justify lg:max-w-3xl">
+        <div
+          className={clsx([
+            'flex flex-col justify-between items-center',
+            'lg:items-end lg:max-w-3xl 2xl:max-w-full 2xl:flex-row-reverse 2xl:items-start'
+          ])}
+        >
+          <p className="text-primaryLight mt-16 text-justify">
             Cette application web à été réalisée dans le but de faciliter
             l’organisation des emplois du temps pour un lycée. Particulièrement
             dans le contexte du covid où les professeurs devaient eux-même
@@ -98,7 +113,7 @@ const Work = (): ReactElement => {
           <Image
             src={appExampleImage2}
             alt="Project2 Image"
-            className="mt-16 transform scale-125 origin-right"
+            className="mt-16 transform scale-125 lg:self-center 2xl:origin-right"
           />
         </div>
       </section>

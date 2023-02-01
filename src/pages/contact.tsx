@@ -1,10 +1,18 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import clsx from 'clsx';
 
-import type { ReactElement, Dispatch, SetStateAction } from 'react';
+import Head from 'next/head';
+import { useState } from 'react';
+
+import type {
+  ChangeEvent,
+  FormEvent,
+  ReactElement,
+  Dispatch,
+  SetStateAction
+} from 'react';
 
 import Separator from '@element/Separator';
 import Header from '@element/Header';
-import clsx from 'clsx';
 
 const Contact = (): ReactElement => {
   const [name, setName] = useState('');
@@ -52,6 +60,14 @@ const Contact = (): ReactElement => {
 
   return (
     <>
+      <Head>
+        <title>Lukas Laudrain - Contact</title>
+        <meta
+          name="description"
+          content="Une envie de réaliser un projet ? N'hésitez pas à me contacter !"
+        />
+      </Head>
+
       <section className="p-8 pt-32 lg:px-32 lg:pt-48 h-screen">
         <Header type={1} className="font-mono text-primary">
           Me contacter
