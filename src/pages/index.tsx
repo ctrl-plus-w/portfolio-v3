@@ -1,4 +1,4 @@
-import type { ReactElement } from 'react';
+import { ReactElement, useEffect, useRef } from 'react';
 
 import Head from 'next/head';
 import clsx from 'clsx';
