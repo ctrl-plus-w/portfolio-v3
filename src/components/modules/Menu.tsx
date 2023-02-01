@@ -52,12 +52,15 @@ const Menu = ({ className }: IProps): ReactElement => {
     <nav
       className={clsx([
         className,
-        'fixed right-0 top-0 p-8',
+        'fixed right-0 top-0 p-8 z-[60]',
         'flex flex-col items-end gap-y-6',
-        menuOpen && 'fixed h-screen w-screen bg-secondary'
+        menuOpen && 'h-screen w-screen bg-secondary'
       ])}
     >
-      <AreaButton onClick={() => setMenuOpen(!menuOpen)} className="mb-9">
+      <AreaButton
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="menu-icon mb-9"
+      >
         <Image src={menu} alt="Menu Icon" height={32} width={32} />
       </AreaButton>
 
@@ -67,7 +70,7 @@ const Menu = ({ className }: IProps): ReactElement => {
           <a
             href={page.path}
             className={clsx(
-              'text-[42px] text-ternary font-medium uppercase',
+              'text-4xl text-ternary font-medium uppercase',
               router.pathname !== page.path && 'opacity-50'
             )}
           >
