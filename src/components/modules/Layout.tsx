@@ -69,7 +69,7 @@ const Layout = ({ children }: IProps): ReactElement => {
       )
 
       .from(
-        'h1, h2, p, a, button',
+        'h1, h2, p, a, button, input, textarea',
         {
           opacity: 0,
           y: '1rem'
