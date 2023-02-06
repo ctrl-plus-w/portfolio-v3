@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { ResponseError } from '@sendgrid/mail';
 
 import sendGrid from '@sendgrid/mail';
 
@@ -13,7 +12,7 @@ export default async function handler(
   try {
     const x = await sendGrid.send({
       to: 'lukas.ldrn@gmail.com',
-      from: 'lukas.ldrn.pro@gmail.com',
+      from: 'contact@lukaslaudrain.fr',
       subject: `Contact: ${req.body.name} (${req.body.mail})`,
       html: req.body.message
     });
