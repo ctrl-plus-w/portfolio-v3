@@ -7,12 +7,11 @@ import type { ReactElement } from 'react';
 import Header from '@element/Header';
 import Separator from '@element/Separator';
 
+import LongArrowDown from '@icon/LongArrowDown';
 
 import useBreakpoints from '@hook/useBreakpoints';
 
 import { renderIf } from '@helper/react';
-
-import arrowDown from '../../public/icons/scroll-button.svg';
 
 import appExampleImage1 from '../../public/images/app_example_1.png';
 import appExampleImage2 from '../../public/images/app_example_2.png';
@@ -25,7 +24,10 @@ const Work = (): ReactElement => {
     <>
       <Head>
         <title>Lukas Laudrain - Mon travail</title>
-        <meta name="description" content="Création de sites web et d'applications web. Liste non-exhaustive des travaux et projets que j'ai réalisé." />
+        <meta
+          name="description"
+          content="Création de sites web et d'applications web. Liste non-exhaustive des travaux et projets que j'ai réalisé."
+        />
       </Head>
 
       <section className="flex flex-col h-screen px-8 pt-32 pb-16 lg:px-32 lg:py-0 lg:justify-center">
@@ -47,11 +49,7 @@ const Work = (): ReactElement => {
 
         {renderIf(
           !greaterThan('md'),
-          <Image
-            src={arrowDown}
-            alt="Arrow Down"
-            className="self-center mt-auto"
-          />
+          <LongArrowDown className="self-center mt-auto stroke-primary" />
         )}
       </section>
 

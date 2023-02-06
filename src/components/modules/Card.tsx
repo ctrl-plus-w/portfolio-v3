@@ -2,18 +2,17 @@ import { useState } from 'react';
 
 import type { ReactElement } from 'react';
 
-import Image from 'next/image';
 import clsx from 'clsx';
 
 import Header from '@element/Header';
 
+import ArrowDown from '@icon/ArrowDown';
+import Check from '@icon/Check';
+import Close from '@icon/Close';
+
 import useBreakpoints from '@hook/useBreakpoints';
 
 import { renderIf } from '@helper/react';
-
-import chevronDown from '../../../public/icons/chevron-down-sharp.svg';
-import check from '../../../public/icons/checkmark-outline.svg';
-import close from '../../../public/icons/close-outline.svg';
 
 interface IProps {
   title: string;
@@ -74,11 +73,19 @@ const Card = ({
             key={index}
           >
             {checked ? (
-              <Image src={check} alt="Check Icon" />
+              <Check
+                className={clsx([dark ? 'stroke-secondary' : 'stroke-primary'])}
+              />
             ) : (
-              <Image src={close} alt="Close Icon" />
+              <Close
+                className={clsx([dark ? 'stroke-secondary' : 'stroke-primary'])}
+              />
             )}
-            <p className="text-primary">{name}</p>
+            <p
+              className={clsx([dark ? 'text-secondaryLight' : 'text-primary'])}
+            >
+              {name}
+            </p>
           </div>
         ))
       )}
@@ -89,16 +96,23 @@ const Card = ({
           className="flex items-center gap-2 mt-7"
           onClick={() => setOpened(!opened)}
         >
-          <span className="text-xl font-mono text-primary border-b border-primary">
+          <span
+            className={clsx([
+              'text-xl font-mono border-b',
+              dark
+                ? 'text-secondary border-secondary'
+                : 'text-primary border-primary'
+            ])}
+          >
             En savoirs plus
           </span>
 
-          <Image
-            src={chevronDown}
-            alt="Chevron Down Icon"
-            className={clsx([opened && 'rotate-90'])}
-            width={24}
-            height={24}
+          <ArrowDown
+            className={clsx([
+              opened && 'rotate-90',
+              dark ? 'stroke-secondary' : 'stroke-primary',
+              'w-6 h-6'
+            ])}
           />
         </button>
       )}

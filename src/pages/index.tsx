@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useRef } from 'react';
+import type { ReactElement } from 'react';
 
 import Head from 'next/head';
 import clsx from 'clsx';
@@ -86,8 +86,8 @@ const Home = (): ReactElement => {
           <Header type={4}>Le devis</Header>
 
           <p className="text-primaryLight text-right w-[80%] md:w-80">
-            Création d’un cahier des charges en accord avec vos souhaits afin de
-            remplir complètement vos attentes.
+            Montage d'un devis et chiffrage grâce au cahier des charges. Et / ou
+            réalisation d'un audit.
           </p>
 
           <div
@@ -230,9 +230,15 @@ const Home = (): ReactElement => {
           />
 
           <Card
-            title="SAV"
-            description="Accompagnement et révision après le projet."
+            title="Maintenance"
+            description="Accompagnement, maintenance et révision après le projet."
             className="flex-1 mt-10 lg:mt-0"
+            options={[
+              {
+                name: "Formules par nombre d'heures",
+                checked: true
+              }
+            ]}
             dark
           />
         </div>

@@ -1,19 +1,20 @@
 import clsx from 'clsx';
 
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-import { ReactElement, useState } from 'react';
-
-import Image from 'next/image';
+import type { ReactElement } from 'react';
 
 import AreaButton from '@element/AreaButton';
 
+import MenuIcon from '@icon/Menu';
+import Close from '@icon/Close';
+
 import useBreakpoints from '@hook/useBreakpoints';
 
-import MENU from '@config/menu';
-
-import menu from '../../../public/icons/menu.svg';
 import { renderIf } from '@helper/react';
+
+import MENU from '@config/menu';
 
 interface IProps {
   className?: string;
@@ -61,7 +62,15 @@ const Menu = ({ className }: IProps): ReactElement => {
         onClick={() => setMenuOpen(!menuOpen)}
         className="menu-icon mb-9"
       >
-        <Image src={menu} alt="Menu Icon" height={32} width={32} />
+        {menuOpen ? (
+          <Close
+            width={32}
+            height={32}
+            className="stroke-primary transform scale-150"
+          />
+        ) : (
+          <MenuIcon width={32} height={32} className="stroke-primary" />
+        )}
       </AreaButton>
 
       {renderIf(
