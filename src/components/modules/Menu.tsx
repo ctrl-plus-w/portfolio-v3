@@ -36,13 +36,14 @@ const Menu = ({ className }: IProps): ReactElement => {
       ])}
     >
       <ul className="flex flex-row gap-24">
-        {MENU.map((page) => (
+        {MENU.map((page, index) => (
           <a
             href={page.path}
             className={clsx(
               'text-ternary font-medium uppercase',
               router.pathname !== page.path && 'opacity-50'
             )}
+            key={page.path + index}
           >
             {page.name}
           </a>
