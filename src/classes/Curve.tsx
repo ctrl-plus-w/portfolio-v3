@@ -3,6 +3,9 @@ import type { ReactElement } from 'react';
 import Vector from '@class/Vector';
 import Color from '@class/Color';
 
+/**
+ * The Curve
+ */
 class Curve {
   width: number;
   height: number;
@@ -15,6 +18,19 @@ class Curve {
   p2: Vector;
   color: Color;
 
+  /**
+   * Create a curve
+   * @param width The width of the curve box
+   * @param height The height of the curve box
+   * @param p0 The first point of the curve
+   * @param p0Drag The drag point of the first point
+   * @param p1Drag1 The first drag point of the middle point
+   * @param p1 The middle point of the curve
+   * @param p1Drag2 The second drag point of the middle point
+   * @param p2Drag The drag point of the last point
+   * @param p2 The last point of the curvz
+   * @param color The color of the curve
+   */
   constructor(
     width: number,
     height: number,
@@ -54,6 +70,10 @@ class Curve {
     );
   }
 
+  /**
+   * Get the SVG path of the Curve
+   * @returns A String
+   */
   getPath(): string {
     return `
       <path
@@ -62,6 +82,10 @@ class Curve {
       />`;
   }
 
+  /**
+   * Get the SVG path of the Curve as a React Element
+   * @returns A ReactElement
+   */
   getReactPath(): ReactElement {
     return (
       <path
@@ -71,6 +95,10 @@ class Curve {
     );
   }
 
+  /**
+   * Get the SVG of the Curve
+   * @returns A ReactElement
+   */
   toSvg(): string {
     return `
     <svg width="${this.width}" height="${this.height}" viewBox="0 0 ${
@@ -81,6 +109,12 @@ class Curve {
     `;
   }
 
+  /**
+   * Combine the paths of two curves and return a svg tag
+   * @param curve1 The first curve
+   * @param curve2 The second curve
+   * @returns A SVG
+   */
   static combinePaths(curve1: Curve, curve2: Curve) {
     if (curve1.width !== curve2.width || curve1.height !== curve2.height)
       console.warn(
@@ -98,6 +132,12 @@ class Curve {
       `;
   }
 
+  /**
+   * Combine the paths of two curves and return a react svg tag
+   * @param curve1 The first curve
+   * @param curve2 The second curve
+   * @returns A React SVG
+   */
   static reactCombinePaths(curve1: Curve, curve2: Curve): ReactElement {
     if (curve1.width !== curve2.width || curve1.height !== curve2.height)
       console.warn(
