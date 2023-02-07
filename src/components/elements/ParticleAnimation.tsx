@@ -4,10 +4,13 @@ import type { ReactElement } from 'react';
 
 import clsx from 'clsx';
 
+import useBreakpoints from '@hook/useBreakpoints';
+
 import ParticleJS from '@class/ParticleJS';
 
+import { deepCopy } from '@helper/object';
+
 import particleJSConfig from '@config/particleJSConfig';
-import useBreakpoints from '@hook/useBreakpoints';
 
 interface IProps {
   className?: string;
@@ -40,21 +43,30 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   };
 
   useEffect(() => {
+    const updateCanvasSize = (
+      container: HTMLDivElement,
+      canvas: HTMLCanvasElement
+    ) => {
+      canvas.width = container.getBoundingClientRect().width;
+      canvas.height = container.getBoundingClientRect().height;
+    };
+
     // Updating canvas size
     if (canvasRef.current && containerRef.current) {
+      let _particleJSConfig = deepCopy(particleJSConfig);
+
       canvasRef.current.style.width = '100%';
       canvasRef.current.style.height = '100%';
 
-      canvasRef.current.width =
-        containerRef.current.getBoundingClientRect().width;
-      canvasRef.current.height =
-        containerRef.current.getBoundingClientRect().height;
+      updateCanvasSize(containerRef.current, canvasRef.current);
 
       if (
         greaterThan('lg') &&
+        _particleJSConfig.particle?.amount !== undefined &&
         particleJSConfig.particle?.amount !== undefined
       ) {
-        particleJSConfig.particle.amount *= 1.3;
+        _particleJSConfig.particle.amount =
+          particleJSConfig.particle.amount * 1.3;
       }
 
       particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
