@@ -1,4 +1,3 @@
-import { useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 
 import type { ReactElement, ReactNode } from 'react';
@@ -8,6 +7,7 @@ import Menu from '@module/Menu';
 
 import Loader from '@element/Loader';
 
+import useDynamicEffect from '@hook/useDynamicEffect';
 import useBreakpoints from '@hook/useBreakpoints';
 
 import { renderIf } from '@helper/react';
@@ -33,7 +33,7 @@ interface IProps {
 const Layout = ({ children }: IProps): ReactElement => {
   const { greaterThan } = useBreakpoints();
 
-  useLayoutEffect(() => {
+  useDynamicEffect(() => {
     const timeline = gsap.timeline();
 
     timeline.to('#loader', {
@@ -67,7 +67,6 @@ const Layout = ({ children }: IProps): ReactElement => {
         },
         '<'
       )
-
       .from(
         'h1, h2, p, a, button, input, textarea',
         {
