@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
     <>
       <Script
         strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-EETSRYKHYP"
+        src="https://www.googletagmanager.com/gtag/js?id=G-NRBCMGRBYT"
       />
       <Script
         id="google-analytics"
@@ -33,7 +33,7 @@ const App = ({ Component, pageProps }: AppProps): ReactElement => {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
         
-          gtag('config', 'G-EETSRYKHYP');
+          gtag('config', 'G-NRBCMGRBYT');
           `
         }}
       />
