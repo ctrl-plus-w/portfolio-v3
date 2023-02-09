@@ -37,14 +37,19 @@ const Work = (): ReactElement => {
         <Separator size="big" />
 
         <p className="text-primaryLight mt-16 lg:max-w-2xl">
-          Passioné depuis très jeune depuis l’informatique, j’ai commencé la
-          programmation au collège. J’ai depuis ouvert mon entreprise et suis
-          devenu développeur en autodidacte.
+          En tant qu'entrepreneur passionné par l'informatique depuis mon plus
+          jeune âge, j'ai commencé à explorer la programmation à l'école. Au fil
+          des ans, j'ai développé mes compétences de manière autodidacte et j'ai
+          fondé ma propre entreprise de développement web.
           <br />
           <br />
-          Chaque projet à son client et est réalisé en accompagnement total avec
-          celui-ci. Le suivi et la compréhension de vos attentes est l’élément
-          clef et primordial de la réusite d’un projet.
+          Je considère chaque projet comme une opportunité unique de travailler
+          en étroite collaboration avec mes clients afin de garantir leur
+          satisfaction totale. Je suis convaincu que le respect des attentes et
+          la compréhension approfondie des besoins de mes clients sont la clé
+          d'un projet réussi. C'est pourquoi je consacre tous mes efforts à
+          établir une relation de confiance avec chaque client pour garantir une
+          expérience de qualité supérieure.
         </p>
 
         {renderIf(
@@ -61,18 +66,19 @@ const Work = (): ReactElement => {
 
         <div className="relative flex flex-col 2xl:flex-row">
           <p className="text-primaryLight mt-16 text-justify lg:max-w-3xl">
-            Les évaluations sur feuilles peuvent ne pas être adaptés à certaines
-            manières d’évaluer les compétences des élèves, d’une autre part, la
-            correction de ces évaluations peut être longue et fastidieuse. C’est
-            pour faciliter le travail des professeurs que cette application web
-            à été développée.
+            L'évaluation traditionnelle sur feuilles peut ne pas être à la
+            hauteur des attentes en matière d'évaluation des compétences des
+            élèves. De plus, la correction de ces évaluations peut être longue
+            et fastidieuse pour les enseignants. C'est pour simplifier leur
+            travail que j'ai développé une application web innovante.
             <br />
             <br />
-            La fonctionnalitée principale demandée était le dynamisme dans les
-            propositions des questions : questions à choix multiple, réponse
-            libre, numérique, textuelle... et c’est autour de cette
-            problématique que l’application à été développée. Avec bien d’autres
-            fonctionnalités encore.
+            L'objectif principal était de proposer une solution dynamique pour
+            les évaluations, en offrant différentes options de questions, telles
+            que les questions à choix multiples, les réponses libres,
+            numériques, textuelles, et bien plus encore. L'application a été
+            conçue pour répondre à ces défis et offrir une gamme complète de
+            fonctionnalités pour améliorer l'expérience de l'utilisateur.
           </p>
 
           <Image
@@ -96,16 +102,19 @@ const Work = (): ReactElement => {
           ])}
         >
           <p className="text-primaryLight mt-16 text-justify">
-            Cette application web à été réalisée dans le but de faciliter
-            l’organisation des emplois du temps pour un lycée. Particulièrement
-            dans le contexte du covid où les professeurs devaient eux-même
-            placer leurs cours en visio-conférence dans l’emplois du temps des
-            élèves.
+            Cette application web a été conçue pour améliorer l'organisation des
+            emplois du temps pour un lycée, en réponse aux défis posés par la
+            pandémie de COVID-19. Les enseignants sont devenus responsables de
+            l'ajout de leurs cours en visioconférence dans les emplois du temps
+            des élèves.
             <br />
             <br />
-            Plusieurs applications web permettent ces fonctionnalités,
-            cependant, le but de celle-ci est de faciliter l’utilisation afin de
-            permettre une prise en main rapide et efficace.
+            Bien que de nombreuses applications web similaires existent sur le
+            marché, mon objectif était de concevoir une application facile à
+            utiliser pour permettre une prise en main rapide et efficace. La
+            fiabilité, le respect et la confiance ont été au centre de mes
+            préoccupations pour développer une solution adaptée aux besoins de
+            l'établissement scolaire.
           </p>
 
           <Image
@@ -124,14 +133,19 @@ const Work = (): ReactElement => {
 
         <div className="flex flex-col 2xl:flex-row">
           <p className="text-primaryLight mt-16 text-justify lg:max-w-3xl">
-            Dans la même idée que l’application de gestion des QCM, l’évaluation
-            des programme nottement lors de cours d’informatique, l’évaluation
-            des programmes des élèves peut être fastidieuse.
+            Inspiré par mon expérience en développement d'une application de
+            gestion de QCM, je me suis rendu compte que l'évaluation des
+            programmes informatiques peut être fastidieuse pour les enseignants
+            et les étudiants.
             <br />
             <br />
-            L’objectif de cette application web est de simplifier pour les
-            élèves comme pour les professeurs la notation et l’évaluation des
-            compétences en développement et en programmation des étudiants.
+            C'est pour améliorer cette situation que j'ai développé une
+            application web innovante, qui simplifie la notation et l'évaluation
+            des compétences en développement et en programmation pour les
+            étudiants et les enseignants. Avec l'expertise que j'ai acquise dans
+            ce domaine, j'ai mis en œuvre des solutions fiables, respectueuses
+            et de confiance pour offrir une expérience d'apprentissage et
+            d'évaluation efficace et professionnelle.
           </p>
 
           <Image

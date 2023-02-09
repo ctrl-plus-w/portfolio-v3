@@ -54,8 +54,8 @@ const Home = (): ReactElement => {
           <Header type={4}>Entretiens préalable</Header>
 
           <p className="text-primaryLight w-[80%] md:w-80">
-            Une première rencontre afin d’accorder vos attentes avec la solution
-            que je vous fournirai.
+            Nous organisons une rencontre initiale pour aligner vos attentes
+            avec la solution sur mesure que nous vous proposons.
           </p>
 
           <div
@@ -86,8 +86,8 @@ const Home = (): ReactElement => {
           <Header type={4}>Le devis</Header>
 
           <p className="text-primaryLight text-right w-[80%] md:w-80">
-            Montage d'un devis et chiffrage grâce au cahier des charges. Et / ou
-            réalisation d'un audit.
+            Nous établissons un devis détaillé en fonction de votre cahier des
+            charges. Audit possible.
           </p>
 
           <div
@@ -118,17 +118,17 @@ const Home = (): ReactElement => {
           <Header type={4}>La conception</Header>
 
           <p className="text-primaryLight w-[80%] md:w-80">
-            Développement de votre solution avec un suivi permanent de
-            l’avancement pour éviter les erreurs.
+            Nous créons votre solution unique en veillant à un suivi continu
+            pour éviter tout imprévu
           </p>
         </article>
 
         <article className="pt-8">
-          <Header type={4}>Le suivi</Header>
+          <Header type={4}>Assistance continue</Header>
 
           <p className="text-primaryLight text-right w-[80%] md:w-80">
-            Vous avez besoin de révisions où de modifications après la
-            finalisation du développement. Le suivi est la pour ça.
+            Nous sommes là pour vous aider, que ce soit pour des retouches ou
+            des modifications après la finalisation du développement.
           </p>
 
           <div
