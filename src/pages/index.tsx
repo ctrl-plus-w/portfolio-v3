@@ -25,12 +25,12 @@ const Home = (): ReactElement => {
         <ParticleAnimation className="w-80 h-80 lg:w-96 lg:h-96" />
 
         <div className="flex flex-col items-center lg:items-end">
-          <Header type={1} className="font-mono text-primary mt-8">
+          <Header type={1} className="font-mono text-center lg:text-right mt-8">
             Lukas
           </Header>
           <Separator size="big" />
 
-          <p className="text-primaryLight text-center mt-12">
+          <p className="text-primaryLight text-center lg:text-right mt-12">
             Développeur web et designer indépendant <br /> Création
             d’applications web complexes
           </p>
