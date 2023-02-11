@@ -68,7 +68,7 @@ const Contact = (): ReactElement => {
         />
       </Head>
 
-      <section className="p-8 pt-32 lg:px-32 lg:pt-48 h-screen">
+      <section className="p-8 pt-32 lg:px-32 lg:pt-48 min-h-screen">
         <Header type={1} className="font-mono text-primary">
           Me contacter
         </Header>

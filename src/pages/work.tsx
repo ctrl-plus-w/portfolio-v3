@@ -30,7 +30,7 @@ const Work = (): ReactElement => {
         />
       </Head>
 
-      <section className="flex flex-col h-screen px-8 pt-32 pb-16 lg:px-32 lg:py-0 lg:justify-center">
+      <section className="flex flex-col min-h-screen px-8 pt-32 pb-16 lg:px-32 lg:py-0 lg:justify-center">
         <Header type={1} className="font-mono text-primary">
           Mon travail
         </Header>
@@ -54,7 +54,9 @@ const Work = (): ReactElement => {
 
         {renderIf(
           !greaterThan('md'),
-          <LongArrowDown className="self-center mt-auto stroke-primary" />
+          <div className="mt-auto self-center ">
+            <LongArrowDown className="mt-8 stroke-primary" />
+          </div>
         )}
       </section>
 
