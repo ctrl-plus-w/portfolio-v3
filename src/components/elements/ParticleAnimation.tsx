@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -42,7 +42,9 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     particleJS.current?.tick();
   };
 
-  useEffect(() => {
+	useLayoutEffect(() => {
+		if (!canvasRef.current || !containerRef.current) return;
+
     const updateCanvasSize = (
       container: HTMLDivElement,
       canvas: HTMLCanvasElement
@@ -52,7 +54,6 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     };
 
     // Updating canvas size
-    if (canvasRef.current && containerRef.current) {
       let _particleJSConfig = deepCopy(particleJSConfig);
 
       canvasRef.current.style.width = '100%';
@@ -69,8 +70,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
           particleJSConfig.particle.amount * 1.3;
       }
 
-      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
-    }
+      particleJS.current = new ParticleJS(canvasRef.current, _particleJSConfig);
 
     frameRef.current = window.requestAnimationFrame(render);
 
@@ -80,7 +80,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
       if (frameRef.current != null)
         window.cancelAnimationFrame(frameRef.current);
     };
-  }, []);
+  }, [containerRef, canvasRef]);
 
   return (
     <div className={clsx(['rounded-full', className])} ref={containerRef}>
