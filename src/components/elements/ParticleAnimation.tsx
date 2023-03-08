@@ -51,6 +51,10 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     // particleJS.current?.tick();
   };
 
+	const log = (...message: string[]) => {
+		setWebConsole(console => [...console, ...message]);
+	}
+
   useEffect(() => {
 		if (!canvasRef.current || !containerRef.current) return;
 
@@ -82,17 +86,19 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 		if (container) {
 			
 			const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
-			setWebConsole(console => [...console, `Query selector size : (${qsWidth}, ${qsHeight})`]);
+			log(`Query selector size : (${qsWidth}, ${qsHeight})`);
+		} else {
+			log("Container not found");
 		}
 
 
-		setWebConsole(console => [...console, `Current bounding client size is : (${width}, ${height})`]);
-		setWebConsole(console => [...console, `Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`]);
-		setWebConsole(console => [...console, `Bounding client size calculated : (${right - left}, ${bottom - top})`]);
-		setWebConsole(console => [...console, `Current offset size is : (${offsetWidth}, ${offsetHeight})`]);
-		setWebConsole(console => [...console, `Current style size is : (${sWidth}, ${sHeight})`]);
-		setWebConsole(console => [...console, `Classes are : ${classes}`]);
-		setWebConsole(console => [...console, ``]);
+		log(`Current bounding client size is : (${width}, ${height})`);
+		log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
+		log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
+		log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
+		log(`Current style size is : (${sWidth}, ${sHeight})`);
+		log(`Classes are : ${classes}`);
+		log('');
 		
 		updateCanvasSize(containerRef.current, canvasRef.current);
 
