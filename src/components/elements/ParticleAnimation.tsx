@@ -78,6 +78,14 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 		const { offsetHeight, offsetWidth } = containerRef.current;
 		const classes = containerRef.current.classList;
 
+		const container = document.querySelector('#test');
+		if (container) {
+			
+			const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
+			setWebConsole(console => [...console, `Query selector size : (${qsWidth}, ${qsHeight})`]);
+		}
+
+
 		setWebConsole(console => [...console, `Current bounding client size is : (${width}, ${height})`]);
 		setWebConsole(console => [...console, `Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`]);
 		setWebConsole(console => [...console, `Bounding client size calculated : (${right - left}, ${bottom - top})`]);
@@ -110,7 +118,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   }, [containerRef, canvasRef]);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500 w-80 h-80'])} ref={containerRef}>
+    <div className={clsx(['rounded-full bg-purple-500 w-80 h-80'])} ref={containerRef} id="test">
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
 				{webConsole.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
