@@ -46,17 +46,19 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     const updateCanvasSize = (
       container: HTMLDivElement,
       canvas: HTMLCanvasElement
-    ) => {
-      canvas.width = container.getBoundingClientRect().width;
-      canvas.height = container.getBoundingClientRect().height;
+		) => {
+			const {width,height} = container.getBoundingClientRect()
+
+      canvas.width = width;
+      canvas.height = height;
+
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
     };
 
     // Updating canvas size
     if (canvasRef.current && containerRef.current) {
       let _particleJSConfig = deepCopy(particleJSConfig);
-
-      canvasRef.current.style.width = '100%';
-      canvasRef.current.style.height = '100%';
 
       updateCanvasSize(containerRef.current, canvasRef.current);
 
@@ -84,7 +86,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
   return (
     <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
-      <canvas ref={canvasRef} className="bg-red-500"></canvas>
+      <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
     </div>
   );
 };
