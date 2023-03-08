@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -23,6 +23,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+	const [console, setConsole] = useState<string[]>([]);
 
   const frameRef = useRef<number | null>(null);
 
@@ -60,32 +62,40 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     if (canvasRef.current && containerRef.current) {
       let _particleJSConfig = deepCopy(particleJSConfig);
 
-      updateCanvasSize(containerRef.current, canvasRef.current);
+			const { width, height } = containerRef.current.getBoundingClientRect();
 
-      if (
-        greaterThan('lg') &&
-        _particleJSConfig.particle?.amount !== undefined &&
-        particleJSConfig.particle?.amount !== undefined
-      ) {
-        _particleJSConfig.particle.amount =
-          particleJSConfig.particle.amount * 1.3;
-      }
+			setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+			
+      // updateCanvasSize(containerRef.current, canvasRef.current);
 
-      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+      // if (
+      //   greaterThan('lg') &&
+      //   _particleJSConfig.particle?.amount !== undefined &&
+      //   particleJSConfig.particle?.amount !== undefined
+      // ) {
+      //   _particleJSConfig.particle.amount =
+      //     particleJSConfig.particle.amount * 1.3;
+      // }
+
+      // particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
 
-    frameRef.current = window.requestAnimationFrame(render);
+    // frameRef.current = window.requestAnimationFrame(render);
 
-    return () => {
-      particleJS.current?.clear();
+    // return () => {
+    //   particleJS.current?.clear();
 
-      if (frameRef.current != null)
-        window.cancelAnimationFrame(frameRef.current);
-    };
+    //   if (frameRef.current != null)
+    //     window.cancelAnimationFrame(frameRef.current);
+    // };
   }, []);
 
   return (
     <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
+			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
+				{console.map(msg => <p className="text-xs text-black">{msg}</p>)}
+			</div>
+
       <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
     </div>
   );
