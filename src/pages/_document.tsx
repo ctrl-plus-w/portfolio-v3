@@ -1,3 +1,5 @@
+import '@style/globals.css';
+
 import { Html, Head, Main, NextScript } from 'next/document';
 
 import type { ReactElement } from 'react';
