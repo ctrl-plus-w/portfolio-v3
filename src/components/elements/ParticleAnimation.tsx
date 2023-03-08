@@ -11,12 +11,15 @@ import ParticleJS from '@class/ParticleJS';
 import { deepCopy } from '@helper/object';
 
 import particleJSConfig from '@config/particleJSConfig';
+import useWebConsole from '@hook/useWebConsole';
 
 interface IProps {
   className?: string;
 }
 
 const ParticleAnimation = ({ className }: IProps): ReactElement => {
+  const { log, console } = useWebConsole();
+
   const { greaterThan } = useBreakpoints();
 
   const particleJS = useRef<ParticleJS | null>();
@@ -39,60 +42,68 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
     t.current = now - (elapsed % fpsInterval);
 
-		const context = canvasRef.current.getContext('2d');
-		if (!context) return;
+    const context = canvasRef.current.getContext('2d');
+    if (!context) return;
 
     particleJS.current?.tick();
   };
 
+  const updateCanvasSize = (
+    container: HTMLDivElement,
+    canvas: HTMLCanvasElement
+  ) => {
+    const { width, height } = container.getBoundingClientRect();
 
-  const containerRef = useCallback((node: HTMLDivElement) => {
-		if (!node || !canvasRef.current) return;
+    canvas.width = width;
+    canvas.height = height;
 
-			const updateCanvasSize = (
-			  container: HTMLDivElement,
-			  canvas: HTMLCanvasElement
-			) => {
-				const {width,height} = container.getBoundingClientRect()
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+  };
 
-			  canvas.width = width;
-			  canvas.height = height;
+  const containerRef = useCallback(
+    (node: HTMLDivElement) => {
+      if (!node || !canvasRef.current) return;
 
-			  canvas.style.width = `${width}px`;
-			  canvas.style.height = `${height}px`;
-			};
+      const { width, height } = node.getBoundingClientRect();
 
-			// Updating canvas size
-			let _particleJSConfig = deepCopy(particleJSConfig);
+      log(`Container size: (${width}, ${height})`);
 
-			updateCanvasSize(node, canvasRef.current);
+      // Updating canvas size
+      let _particleJSConfig = deepCopy(particleJSConfig);
 
-			if (
-			  greaterThan('lg') &&
-			  _particleJSConfig.particle?.amount !== undefined &&
-			  particleJSConfig.particle?.amount !== undefined
-			) {
-			  _particleJSConfig.particle.amount =
-			    particleJSConfig.particle.amount * 1.3;
-			}
+      updateCanvasSize(node, canvasRef.current);
 
-			particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+      // if (
+      //   greaterThan('lg') &&
+      //   _particleJSConfig.particle?.amount !== undefined &&
+      //   particleJSConfig.particle?.amount !== undefined
+      // ) {
+      //   _particleJSConfig.particle.amount =
+      //     particleJSConfig.particle.amount * 1.3;
+      // }
 
-			frameRef.current = window.requestAnimationFrame(render);
+      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
-			return () => {
-			  particleJS.current?.clear();
+      frameRef.current = window.requestAnimationFrame(render);
 
-			  if (frameRef.current != null)
-			    window.cancelAnimationFrame(frameRef.current);
-			};
-  }, [canvasRef]);
+      return () => {
+        particleJS.current?.clear();
+
+        if (frameRef.current != null)
+          window.cancelAnimationFrame(frameRef.current);
+      };
+    },
+    [canvasRef]
+  );
 
   return (
-    <div className={clsx(['rounded-full', className])} ref={containerRef}>
-
-      <canvas ref={canvasRef}></canvas>
-    </div>
+    <>
+      {console()}
+      <div className={clsx(['rounded-full', className])} ref={containerRef}>
+        <canvas ref={canvasRef}></canvas>
+      </div>
+    </>
   );
 };
 
