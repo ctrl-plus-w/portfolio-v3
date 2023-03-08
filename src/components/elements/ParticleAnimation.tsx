@@ -39,17 +39,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     if (elapsed < fpsInterval || canvasRef.current == null) return;
 
     t.current = now - (elapsed % fpsInterval);
-
-    const ctx = canvasRef.current.getContext('2d');
-
-		if (ctx) {
-			ctx.fillStyle = "#fff000";
-			ctx.fillRect(0, 0, canvasRef.current.width / 2, canvasRef.current.height / 2);
-			ctx.fillRect(canvasRef.current.width / 2, canvasRef.current.height / 2, canvasRef.current.width / 2, canvasRef.current.height / 2);
-		}
+    particleJS.current?.tick();
   };
-
-	
 
   useEffect(() => {
     const updateCanvasSize = (
@@ -69,19 +60,19 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
       updateCanvasSize(containerRef.current, canvasRef.current);
 
-      // if (
-      //   greaterThan('lg') &&
-      //   _particleJSConfig.particle?.amount !== undefined &&
-      //   particleJSConfig.particle?.amount !== undefined
-      // ) {
-      //   _particleJSConfig.particle.amount =
-      //     particleJSConfig.particle.amount * 1.3;
-      // }
+      if (
+        greaterThan('lg') &&
+        _particleJSConfig.particle?.amount !== undefined &&
+        particleJSConfig.particle?.amount !== undefined
+      ) {
+        _particleJSConfig.particle.amount =
+          particleJSConfig.particle.amount * 1.3;
+      }
 
-      // particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
 
-		frameRef.current = window.requestAnimationFrame(render);
+    frameRef.current = window.requestAnimationFrame(render);
 
     return () => {
       particleJS.current?.clear();
@@ -92,8 +83,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   }, []);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
-      <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
+    <div className={clsx(['rounded-full', className])} ref={containerRef}>
+      <canvas ref={canvasRef}></canvas>
     </div>
   );
 };
