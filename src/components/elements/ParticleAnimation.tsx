@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -24,7 +24,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-	const [console, setConsole] = useState<string[]>([]);
+	const [webConsole, setWebConsole] = useState<string[]>([]);
 
   const frameRef = useRef<number | null>(null);
 
@@ -51,7 +51,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     // particleJS.current?.tick();
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
 		if (!canvasRef.current || !containerRef.current) return;
 
 		// const {width,height} = containerRef.current.getBoundingClientRect()
@@ -74,8 +74,15 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 		let _particleJSConfig = deepCopy(particleJSConfig);
 
 		const { width, height } = containerRef.current.getBoundingClientRect();
+		const { width: sWidth, height: sHeight } = containerRef.current.style;
+		const { offsetHeight, offsetWidth } = containerRef.current;
+		const classes = containerRef.current.classList;
 
-		setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+		setWebConsole(console => [...console, `Current bounding client size is : (${width}, ${height})`]);
+		setWebConsole(console => [...console, `Current offset size is : (${offsetWidth}, ${offsetHeight})`]);
+		setWebConsole(console => [...console, `Current style size is : (${sWidth}, ${sHeight})`]);
+		setWebConsole(console => [...console, `Classes are : ${classes}`]);
+		setWebConsole(console => [...console, ``]);
 		
 		updateCanvasSize(containerRef.current, canvasRef.current);
 
@@ -103,7 +110,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   return (
     <div className={clsx(['rounded-full bg-purple-500 w-80 h-80 lg:w-96 lg:h-96'])} ref={containerRef}>
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
-				{console.map(msg => <p className="text-xs text-black">{msg}</p>)}
+				{webConsole.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
 
       <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
