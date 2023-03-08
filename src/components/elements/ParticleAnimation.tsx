@@ -45,6 +45,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   };
 
   useLayoutEffect(() => {
+		if (!canvasRef.current || !containerRef.current) return;
+
     const updateCanvasSize = (
       container: HTMLDivElement,
       canvas: HTMLCanvasElement
@@ -59,26 +61,24 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     };
 
     // Updating canvas size
-    if (canvasRef.current && containerRef.current) {
-      let _particleJSConfig = deepCopy(particleJSConfig);
+		let _particleJSConfig = deepCopy(particleJSConfig);
 
-			const { width, height } = containerRef.current.getBoundingClientRect();
+		const { width, height } = containerRef.current.getBoundingClientRect();
 
-			setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
-			
-      updateCanvasSize(containerRef.current, canvasRef.current);
+		setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+		
+		updateCanvasSize(containerRef.current, canvasRef.current);
 
-      // if (
-      //   greaterThan('lg') &&
-      //   _particleJSConfig.particle?.amount !== undefined &&
-      //   particleJSConfig.particle?.amount !== undefined
-      // ) {
-      //   _particleJSConfig.particle.amount =
-      //     particleJSConfig.particle.amount * 1.3;
-      // }
+		// if (
+		//   greaterThan('lg') &&
+		//   _particleJSConfig.particle?.amount !== undefined &&
+		//   particleJSConfig.particle?.amount !== undefined
+		// ) {
+		//   _particleJSConfig.particle.amount =
+		//     particleJSConfig.particle.amount * 1.3;
+		// }
 
-      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
-    }
+		particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
     frameRef.current = window.requestAnimationFrame(render);
 
