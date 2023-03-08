@@ -56,71 +56,81 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 	}
 
   useEffect(() => {
-		if (!canvasRef.current || !containerRef.current) return;
 
-		// const {width,height} = containerRef.current.getBoundingClientRect()
-		// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+		const onLoad = () => {
+			if (!canvasRef.current || !containerRef.current) return;
 
-    // const updateCanvasSize = (
-    //   container: HTMLDivElement,
-    //   canvas: HTMLCanvasElement
-		// ) => {
-		// 	const {width,height} = container.getBoundingClientRect()
+			// const {width,height} = containerRef.current.getBoundingClientRect()
+			// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
 
-    //   canvas.width = width;
-    //   canvas.height = height;
+			// const updateCanvasSize = (
+			//   container: HTMLDivElement,
+			//   canvas: HTMLCanvasElement
+			// ) => {
+			// 	const {width,height} = container.getBoundingClientRect()
 
-    //   canvas.style.width = `${width}px`;
-    //   canvas.style.height = `${height}px`;
-    // };
+			//   canvas.width = width;
+			//   canvas.height = height;
 
-    // Updating canvas size
-		let _particleJSConfig = deepCopy(particleJSConfig);
+			//   canvas.style.width = `${width}px`;
+			//   canvas.style.height = `${height}px`;
+			// };
 
-		const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
-		const { width: sWidth, height: sHeight } = containerRef.current.style;
-		const { offsetHeight, offsetWidth } = containerRef.current;
-		const classes = containerRef.current.classList;
+			// Updating canvas size
+			let _particleJSConfig = deepCopy(particleJSConfig);
 
-		const container = document.querySelector('#test');
-		if (container) {
+			const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
+			const { width: sWidth, height: sHeight } = containerRef.current.style;
+			const { offsetHeight, offsetWidth } = containerRef.current;
+			const classes = containerRef.current.classList;
+
+			const container = document.querySelector('#test');
+			if (container) {
 			
-			const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
-			log(`Query selector size : (${qsWidth}, ${qsHeight})`);
-		} else {
-			log("Container not found");
+				const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
+				log(`Query selector size : (${qsWidth}, ${qsHeight})`);
+			} else {
+				log("Container not found");
+			}
+
+
+			log(`Current bounding client size is : (${width}, ${height})`);
+			log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
+			log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
+			log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
+			log(`Current style size is : (${sWidth}, ${sHeight})`);
+			log(`Classes are : ${classes}`);
+			log('');
+		
+			// updateCanvasSize(containerRef.current, canvasRef.current);
+
+			// if (
+			//   greaterThan('lg') &&
+			//   _particleJSConfig.particle?.amount !== undefined &&
+			//   particleJSConfig.particle?.amount !== undefined
+			// ) {
+			//   _particleJSConfig.particle.amount =
+			//     particleJSConfig.particle.amount * 1.3;
+			// }
+
+			// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+
+			// frameRef.current = window.requestAnimationFrame(render);
+
+			// return () => {
+			//   particleJS.current?.clear();
+
+			//   if (frameRef.current != null)
+			//     window.cancelAnimationFrame(frameRef.current);
+			// };
 		}
 
+		if(containerRef.current)
+		containerRef.current.addEventListener('load', onLoad)
 
-		log(`Current bounding client size is : (${width}, ${height})`);
-		log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
-		log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
-		log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
-		log(`Current style size is : (${sWidth}, ${sHeight})`);
-		log(`Classes are : ${classes}`);
-		log('');
-		
-		// updateCanvasSize(containerRef.current, canvasRef.current);
-
-		// if (
-		//   greaterThan('lg') &&
-		//   _particleJSConfig.particle?.amount !== undefined &&
-		//   particleJSConfig.particle?.amount !== undefined
-		// ) {
-		//   _particleJSConfig.particle.amount =
-		//     particleJSConfig.particle.amount * 1.3;
-		// }
-
-		// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
-
-    // frameRef.current = window.requestAnimationFrame(render);
-
-    // return () => {
-    //   particleJS.current?.clear();
-
-    //   if (frameRef.current != null)
-    //     window.cancelAnimationFrame(frameRef.current);
-    // };
+		return () => {
+			containerRef.current?.removeEventListener('load', onLoad);
+		}
   }, [containerRef, canvasRef]);
 
   return (
