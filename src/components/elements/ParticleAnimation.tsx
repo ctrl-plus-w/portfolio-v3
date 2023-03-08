@@ -73,12 +73,14 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     // Updating canvas size
 		let _particleJSConfig = deepCopy(particleJSConfig);
 
-		const { width, height } = containerRef.current.getBoundingClientRect();
+		const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
 		const { width: sWidth, height: sHeight } = containerRef.current.style;
 		const { offsetHeight, offsetWidth } = containerRef.current;
 		const classes = containerRef.current.classList;
 
 		setWebConsole(console => [...console, `Current bounding client size is : (${width}, ${height})`]);
+		setWebConsole(console => [...console, `Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`]);
+		setWebConsole(console => [...console, `Bounding client size calculated : (${right - left}, ${bottom - top})`]);
 		setWebConsole(console => [...console, `Current offset size is : (${offsetWidth}, ${offsetHeight})`]);
 		setWebConsole(console => [...console, `Current style size is : (${sWidth}, ${sHeight})`]);
 		setWebConsole(console => [...console, `Classes are : ${classes}`]);
