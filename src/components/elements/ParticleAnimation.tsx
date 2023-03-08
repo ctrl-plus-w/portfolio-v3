@@ -66,7 +66,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
 			setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
 			
-      // updateCanvasSize(containerRef.current, canvasRef.current);
+      updateCanvasSize(containerRef.current, canvasRef.current);
 
       // if (
       //   greaterThan('lg') &&
