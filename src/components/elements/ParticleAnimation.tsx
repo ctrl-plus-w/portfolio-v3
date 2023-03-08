@@ -62,7 +62,10 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
 			const ctx = canvasRef.current.getContext('2d');
 
-			// ctx?.fillRect(0, 0, canvasRef.current.width)
+			if (ctx) {
+				ctx.fillStyle = "#fff000";
+				ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+			}
 
       // if (
       //   greaterThan('lg') &&
