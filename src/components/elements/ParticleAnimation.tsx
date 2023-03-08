@@ -77,17 +77,17 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
       //     particleJSConfig.particle.amount * 1.3;
       // }
 
-      // particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
 
-    // frameRef.current = window.requestAnimationFrame(render);
+    frameRef.current = window.requestAnimationFrame(render);
 
-    // return () => {
-    //   particleJS.current?.clear();
+    return () => {
+      particleJS.current?.clear();
 
-    //   if (frameRef.current != null)
-    //     window.cancelAnimationFrame(frameRef.current);
-    // };
+      if (frameRef.current != null)
+        window.cancelAnimationFrame(frameRef.current);
+    };
   }, []);
 
   return (
