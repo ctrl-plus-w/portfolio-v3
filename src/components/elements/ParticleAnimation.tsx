@@ -90,18 +90,18 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
 		// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
-    // frameRef.current = window.requestAnimationFrame(render);
+    frameRef.current = window.requestAnimationFrame(render);
 
-    // return () => {
-    //   particleJS.current?.clear();
+    return () => {
+      particleJS.current?.clear();
 
-    //   if (frameRef.current != null)
-    //     window.cancelAnimationFrame(frameRef.current);
-    // };
+      if (frameRef.current != null)
+        window.cancelAnimationFrame(frameRef.current);
+    };
   }, [containerRef, canvasRef]);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
+    <div className={clsx(['rounded-full bg-purple-500'])} style={{ width: '384px', height: '384px' }} ref={containerRef}>
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
 				{console.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
