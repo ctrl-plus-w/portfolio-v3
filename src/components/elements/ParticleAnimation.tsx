@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -21,132 +21,77 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
   const particleJS = useRef<ParticleJS | null>();
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-	const [webConsole, setWebConsole] = useState<string[]>([]);
 
   const frameRef = useRef<number | null>(null);
 
   const t = useRef<number>(Date.now());
 
-  // const render = () => {
-  //   const fpsInterval = 1000 / particleJSConfig.fps;
+  const render = () => {
+    const fpsInterval = 1000 / particleJSConfig.fps;
 
-  //   frameRef.current = window.requestAnimationFrame(render);
+    frameRef.current = window.requestAnimationFrame(render);
 
-  //   const now = Date.now();
-  //   const elapsed = now - t.current;
+    const now = Date.now();
+    const elapsed = now - t.current;
 
-  //   if (elapsed < fpsInterval || canvasRef.current == null) return;
+    if (elapsed < fpsInterval || canvasRef.current == null) return;
 
-  //   t.current = now - (elapsed % fpsInterval);
+    t.current = now - (elapsed % fpsInterval);
 
-	// 	const context = canvasRef.current.getContext('2d');
-	// 	if (!context) return;
+		const context = canvasRef.current.getContext('2d');
+		if (!context) return;
 
-	// 	context.fillStyle = "#fff000";
-	// 	context.fillRect(0, 0, canvasRef.current.width / 2, canvasRef.current.height / 2);
-	// 	context.fillRect(canvasRef.current.width / 2, canvasRef.current.height / 2, canvasRef.current.width / 2, canvasRef.current.height / 2);
-  //   // particleJS.current?.tick();
-  // };
-
-	const log = (...message: string[]) => {
-		setWebConsole(console => [...console, ...message]);
-	}
-
-  // useEffect(() => {
-
-	// 	const onLoad = () => {
-	// 		if (!canvasRef.current || !containerRef.current) return;
-
-	// 		// const {width,height} = containerRef.current.getBoundingClientRect()
-	// 		// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
-
-	// 		// const updateCanvasSize = (
-	// 		//   container: HTMLDivElement,
-	// 		//   canvas: HTMLCanvasElement
-	// 		// ) => {
-	// 		// 	const {width,height} = container.getBoundingClientRect()
-
-	// 		//   canvas.width = width;
-	// 		//   canvas.height = height;
-
-	// 		//   canvas.style.width = `${width}px`;
-	// 		//   canvas.style.height = `${height}px`;
-	// 		// };
-
-	// 		// Updating canvas size
-	// 		let _particleJSConfig = deepCopy(particleJSConfig);
-
-	// 		const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
-	// 		const { width: sWidth, height: sHeight } = containerRef.current.style;
-	// 		const { offsetHeight, offsetWidth } = containerRef.current;
-	// 		const classes = containerRef.current.classList;
-
-	// 		const container = document.querySelector('#test');
-	// 		if (container) {
-			
-	// 			const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
-	// 			log(`Query selector size : (${qsWidth}, ${qsHeight})`);
-	// 		} else {
-	// 			log("Container not found");
-	// 		}
+    particleJS.current?.tick();
+  };
 
 
-	// 		log(`Current bounding client size is : (${width}, ${height})`);
-	// 		log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
-	// 		log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
-	// 		log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
-	// 		log(`Current style size is : (${sWidth}, ${sHeight})`);
-	// 		log(`Classes are : ${classes}`);
-	// 		log('');
-		
-	// 		// updateCanvasSize(containerRef.current, canvasRef.current);
+  const containerRef = useCallback((node: HTMLDivElement) => {
+		if (!node || !canvasRef.current) return;
 
-	// 		// if (
-	// 		//   greaterThan('lg') &&
-	// 		//   _particleJSConfig.particle?.amount !== undefined &&
-	// 		//   particleJSConfig.particle?.amount !== undefined
-	// 		// ) {
-	// 		//   _particleJSConfig.particle.amount =
-	// 		//     particleJSConfig.particle.amount * 1.3;
-	// 		// }
+			const updateCanvasSize = (
+			  container: HTMLDivElement,
+			  canvas: HTMLCanvasElement
+			) => {
+				const {width,height} = container.getBoundingClientRect()
 
-	// 		// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+			  canvas.width = width;
+			  canvas.height = height;
 
-	// 		// frameRef.current = window.requestAnimationFrame(render);
+			  canvas.style.width = `${width}px`;
+			  canvas.style.height = `${height}px`;
+			};
 
-	// 		// return () => {
-	// 		//   particleJS.current?.clear();
+			// Updating canvas size
+			let _particleJSConfig = deepCopy(particleJSConfig);
 
-	// 		//   if (frameRef.current != null)
-	// 		//     window.cancelAnimationFrame(frameRef.current);
-	// 		// };
-	// 	}
+			updateCanvasSize(node, canvasRef.current);
 
-	// 	window.addEventListener('load', onLoad)
+			if (
+			  greaterThan('lg') &&
+			  _particleJSConfig.particle?.amount !== undefined &&
+			  particleJSConfig.particle?.amount !== undefined
+			) {
+			  _particleJSConfig.particle.amount =
+			    particleJSConfig.particle.amount * 1.3;
+			}
 
-	// 	return () => {
-	// 		window.removeEventListener('load', onLoad);
-	// 	}
-  // }, [containerRef, canvasRef]);
+			particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
-	const measurefRef = useCallback((node: HTMLDivElement) => {
-		if (!node) return;
+			frameRef.current = window.requestAnimationFrame(render);
 
-		const { width, height } = node.getBoundingClientRect();
+			return () => {
+			  particleJS.current?.clear();
 
-		log(`Current bounding client size is : (${width}, ${height})`);
-	}, []);
+			  if (frameRef.current != null)
+			    window.cancelAnimationFrame(frameRef.current);
+			};
+  }, [canvasRef]);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500', className])} ref={measurefRef} id="test">
-			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
-				{webConsole.map(msg => <p className="text-xs text-black">{msg}</p>)}
-			</div>
+    <div className={clsx(['rounded-full', className])} ref={containerRef}>
 
-      <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
+      <canvas ref={canvasRef}></canvas>
     </div>
   );
 };
