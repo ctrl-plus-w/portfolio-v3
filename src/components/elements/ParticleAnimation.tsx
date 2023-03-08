@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -55,86 +55,93 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 		setWebConsole(console => [...console, ...message]);
 	}
 
-  useEffect(() => {
+  // useEffect(() => {
 
-		const onLoad = () => {
-			if (!canvasRef.current || !containerRef.current) return;
+	// 	const onLoad = () => {
+	// 		if (!canvasRef.current || !containerRef.current) return;
 
-			// const {width,height} = containerRef.current.getBoundingClientRect()
-			// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+	// 		// const {width,height} = containerRef.current.getBoundingClientRect()
+	// 		// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
 
-			// const updateCanvasSize = (
-			//   container: HTMLDivElement,
-			//   canvas: HTMLCanvasElement
-			// ) => {
-			// 	const {width,height} = container.getBoundingClientRect()
+	// 		// const updateCanvasSize = (
+	// 		//   container: HTMLDivElement,
+	// 		//   canvas: HTMLCanvasElement
+	// 		// ) => {
+	// 		// 	const {width,height} = container.getBoundingClientRect()
 
-			//   canvas.width = width;
-			//   canvas.height = height;
+	// 		//   canvas.width = width;
+	// 		//   canvas.height = height;
 
-			//   canvas.style.width = `${width}px`;
-			//   canvas.style.height = `${height}px`;
-			// };
+	// 		//   canvas.style.width = `${width}px`;
+	// 		//   canvas.style.height = `${height}px`;
+	// 		// };
 
-			// Updating canvas size
-			let _particleJSConfig = deepCopy(particleJSConfig);
+	// 		// Updating canvas size
+	// 		let _particleJSConfig = deepCopy(particleJSConfig);
 
-			const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
-			const { width: sWidth, height: sHeight } = containerRef.current.style;
-			const { offsetHeight, offsetWidth } = containerRef.current;
-			const classes = containerRef.current.classList;
+	// 		const { width, height, left, right, bottom, top } = containerRef.current.getBoundingClientRect();
+	// 		const { width: sWidth, height: sHeight } = containerRef.current.style;
+	// 		const { offsetHeight, offsetWidth } = containerRef.current;
+	// 		const classes = containerRef.current.classList;
 
-			const container = document.querySelector('#test');
-			if (container) {
+	// 		const container = document.querySelector('#test');
+	// 		if (container) {
 			
-				const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
-				log(`Query selector size : (${qsWidth}, ${qsHeight})`);
-			} else {
-				log("Container not found");
-			}
+	// 			const { width: qsWidth, height: qsHeight } = container.getBoundingClientRect();
+	// 			log(`Query selector size : (${qsWidth}, ${qsHeight})`);
+	// 		} else {
+	// 			log("Container not found");
+	// 		}
 
 
-			log(`Current bounding client size is : (${width}, ${height})`);
-			log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
-			log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
-			log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
-			log(`Current style size is : (${sWidth}, ${sHeight})`);
-			log(`Classes are : ${classes}`);
-			log('');
+	// 		log(`Current bounding client size is : (${width}, ${height})`);
+	// 		log(`Bounding client rect : (Top: ${Math.round(top)}, Left: ${Math.round(left)}, Bottom: ${Math.round(bottom)}, Right: ${Math.round(right)})`);
+	// 		log(`Bounding client size calculated : (${right - left}, ${bottom - top})`);
+	// 		log(`Current offset size is : (${offsetWidth}, ${offsetHeight})`);
+	// 		log(`Current style size is : (${sWidth}, ${sHeight})`);
+	// 		log(`Classes are : ${classes}`);
+	// 		log('');
 		
-			// updateCanvasSize(containerRef.current, canvasRef.current);
+	// 		// updateCanvasSize(containerRef.current, canvasRef.current);
 
-			// if (
-			//   greaterThan('lg') &&
-			//   _particleJSConfig.particle?.amount !== undefined &&
-			//   particleJSConfig.particle?.amount !== undefined
-			// ) {
-			//   _particleJSConfig.particle.amount =
-			//     particleJSConfig.particle.amount * 1.3;
-			// }
+	// 		// if (
+	// 		//   greaterThan('lg') &&
+	// 		//   _particleJSConfig.particle?.amount !== undefined &&
+	// 		//   particleJSConfig.particle?.amount !== undefined
+	// 		// ) {
+	// 		//   _particleJSConfig.particle.amount =
+	// 		//     particleJSConfig.particle.amount * 1.3;
+	// 		// }
 
-			// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+	// 		// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
-			// frameRef.current = window.requestAnimationFrame(render);
+	// 		// frameRef.current = window.requestAnimationFrame(render);
 
-			// return () => {
-			//   particleJS.current?.clear();
+	// 		// return () => {
+	// 		//   particleJS.current?.clear();
 
-			//   if (frameRef.current != null)
-			//     window.cancelAnimationFrame(frameRef.current);
-			// };
-		}
+	// 		//   if (frameRef.current != null)
+	// 		//     window.cancelAnimationFrame(frameRef.current);
+	// 		// };
+	// 	}
 
-		if(containerRef.current)
-		containerRef.current.addEventListener('load', onLoad)
+	// 	window.addEventListener('load', onLoad)
 
-		return () => {
-			containerRef.current?.removeEventListener('load', onLoad);
-		}
-  }, [containerRef, canvasRef]);
+	// 	return () => {
+	// 		window.removeEventListener('load', onLoad);
+	// 	}
+  // }, [containerRef, canvasRef]);
+
+	const measurefRef = useCallback((node: HTMLDivElement) => {
+		if (!node) return;
+
+		const { width, height } = node.getBoundingClientRect();
+
+		log(`Current bounding client size is : (${width}, ${height})`);
+	}, []);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef} id="test">
+    <div className={clsx(['rounded-full bg-purple-500', className])} ref={measurefRef} id="test">
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
 				{webConsole.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
