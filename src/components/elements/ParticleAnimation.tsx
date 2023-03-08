@@ -83,8 +83,8 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   }, []);
 
   return (
-    <div className={clsx(['rounded-full', className])} ref={containerRef}>
-      <canvas ref={canvasRef}></canvas>
+    <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
+      <canvas ref={canvasRef} className="bg-red-500"></canvas>
     </div>
   );
 };
