@@ -60,31 +60,26 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
       updateCanvasSize(containerRef.current, canvasRef.current);
 
-      if (
-        greaterThan('lg') &&
-        _particleJSConfig.particle?.amount !== undefined &&
-        particleJSConfig.particle?.amount !== undefined
-      ) {
-        _particleJSConfig.particle.amount =
-          particleJSConfig.particle.amount * 1.3;
-      }
+			const ctx = canvasRef.current.getContext('2d');
 
-      particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+			// ctx?.fillRect(0, 0, canvasRef.current.width)
+
+      // if (
+      //   greaterThan('lg') &&
+      //   _particleJSConfig.particle?.amount !== undefined &&
+      //   particleJSConfig.particle?.amount !== undefined
+      // ) {
+      //   _particleJSConfig.particle.amount =
+      //     particleJSConfig.particle.amount * 1.3;
+      // }
+
+      // particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
-
-    frameRef.current = window.requestAnimationFrame(render);
-
-    return () => {
-      particleJS.current?.clear();
-
-      if (frameRef.current != null)
-        window.cancelAnimationFrame(frameRef.current);
-    };
   }, []);
 
   return (
-    <div className={clsx(['rounded-full', className])} ref={containerRef}>
-      <canvas ref={canvasRef}></canvas>
+    <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
+      <canvas ref={canvasRef} className="bg-red-500 bg-opacity-80"></canvas>
     </div>
   );
 };
