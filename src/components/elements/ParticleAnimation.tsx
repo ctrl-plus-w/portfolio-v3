@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import type { ReactElement } from 'react';
 
@@ -44,7 +44,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     particleJS.current?.tick();
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateCanvasSize = (
       container: HTMLDivElement,
       canvas: HTMLCanvasElement
@@ -88,7 +88,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
       if (frameRef.current != null)
         window.cancelAnimationFrame(frameRef.current);
     };
-  }, []);
+  }, [containerRef, canvasRef]);
 
   return (
     <div className={clsx(['rounded-full bg-purple-500', className])} ref={containerRef}>
