@@ -54,41 +54,41 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   useLayoutEffect(() => {
 		if (!canvasRef.current || !containerRef.current) return;
 
-		const {width,height} = containerRef.current.getBoundingClientRect()
-		setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
-
-    // const updateCanvasSize = (
-    //   container: HTMLDivElement,
-    //   canvas: HTMLCanvasElement
-		// ) => {
-		// 	const {width,height} = container.getBoundingClientRect()
-
-    //   canvas.width = width;
-    //   canvas.height = height;
-
-    //   canvas.style.width = `${width}px`;
-    //   canvas.style.height = `${height}px`;
-    // };
-
-    // // Updating canvas size
-		// let _particleJSConfig = deepCopy(particleJSConfig);
-
-		// const { width, height } = containerRef.current.getBoundingClientRect();
-
+		// const {width,height} = containerRef.current.getBoundingClientRect()
 		// setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
+
+    const updateCanvasSize = (
+      container: HTMLDivElement,
+      canvas: HTMLCanvasElement
+		) => {
+			const {width,height} = container.getBoundingClientRect()
+
+      canvas.width = width;
+      canvas.height = height;
+
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+    };
+
+    // Updating canvas size
+		let _particleJSConfig = deepCopy(particleJSConfig);
+
+		const { width, height } = containerRef.current.getBoundingClientRect();
+
+		setConsole(console => [...console, `Current size is : (${width}, ${height})`]);
 		
-		// updateCanvasSize(containerRef.current, canvasRef.current);
+		updateCanvasSize(containerRef.current, canvasRef.current);
 
-		// if (
-		//   greaterThan('lg') &&
-		//   _particleJSConfig.particle?.amount !== undefined &&
-		//   particleJSConfig.particle?.amount !== undefined
-		// ) {
-		//   _particleJSConfig.particle.amount =
-		//     particleJSConfig.particle.amount * 1.3;
-		// }
+		if (
+		  greaterThan('lg') &&
+		  _particleJSConfig.particle?.amount !== undefined &&
+		  particleJSConfig.particle?.amount !== undefined
+		) {
+		  _particleJSConfig.particle.amount =
+		    particleJSConfig.particle.amount * 1.3;
+		}
 
-		// particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
+		particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
 
     frameRef.current = window.requestAnimationFrame(render);
 
@@ -101,7 +101,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   }, [containerRef, canvasRef]);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500'])} style={{ width: '384px', height: '384px' }} ref={containerRef}>
+    <div className={clsx(['rounded-full bg-purple-500 w-80 h-80 lg:w-96 lg:h-96'])} ref={containerRef}>
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
 				{console.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
