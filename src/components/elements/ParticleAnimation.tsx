@@ -39,8 +39,17 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     if (elapsed < fpsInterval || canvasRef.current == null) return;
 
     t.current = now - (elapsed % fpsInterval);
-    particleJS.current?.tick();
+
+    const ctx = canvasRef.current.getContext('2d');
+
+		if (ctx) {
+			ctx.fillStyle = "#fff000";
+			ctx.fillRect(0, 0, canvasRef.current.width / 2, canvasRef.current.height / 2);
+			ctx.fillRect(canvasRef.current.width / 2, canvasRef.current.height / 2, canvasRef.current.width / 2, canvasRef.current.height / 2);
+		}
   };
+
+	
 
   useEffect(() => {
     const updateCanvasSize = (
@@ -60,13 +69,6 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
       updateCanvasSize(containerRef.current, canvasRef.current);
 
-			const ctx = canvasRef.current.getContext('2d');
-
-			if (ctx) {
-				ctx.fillStyle = "#fff000";
-				ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-			}
-
       // if (
       //   greaterThan('lg') &&
       //   _particleJSConfig.particle?.amount !== undefined &&
@@ -78,6 +80,15 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
 
       // particleJS.current = new ParticleJS(canvasRef.current, particleJSConfig);
     }
+
+		frameRef.current = window.requestAnimationFrame(render);
+
+    return () => {
+      particleJS.current?.clear();
+
+      if (frameRef.current != null)
+        window.cancelAnimationFrame(frameRef.current);
+    };
   }, []);
 
   return (
