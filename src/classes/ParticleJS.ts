@@ -63,7 +63,7 @@ class ParticleJS {
     this.particles = [];
 
     this.generateParticles();
-  }
+	}
 
   /**
    * Clear the class

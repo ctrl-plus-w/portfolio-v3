@@ -41,7 +41,14 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
     if (elapsed < fpsInterval || canvasRef.current == null) return;
 
     t.current = now - (elapsed % fpsInterval);
-    particleJS.current?.tick();
+
+		const context = canvasRef.current.getContext('2d');
+		if (!context) return;
+
+		context.fillStyle = "#fff000";
+		context.fillRect(0, 0, canvasRef.current.width / 2, canvasRef.current.height / 2);
+		context.fillRect(canvasRef.current.width / 2, canvasRef.current.height / 2, canvasRef.current.width / 2, canvasRef.current.height / 2);
+    // particleJS.current?.tick();
   };
 
   useLayoutEffect(() => {
