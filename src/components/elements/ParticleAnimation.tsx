@@ -108,7 +108,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   }, [containerRef, canvasRef]);
 
   return (
-    <div className={clsx(['rounded-full bg-purple-500 w-80 h-80 lg:w-96 lg:h-96'])} ref={containerRef}>
+    <div className={clsx(['rounded-full bg-purple-500 w-80 h-80'])} ref={containerRef}>
 			<div className="absolute top-0 left-0 z-[1000] flex flex-col gap-2 font-mono">
 				{webConsole.map(msg => <p className="text-xs text-black">{msg}</p>)}
 			</div>
