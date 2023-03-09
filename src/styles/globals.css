@@ -37,3 +37,15 @@
     @apply items-end self-end;
   }
 }
+
+#particleAnimation {
+	width: 20rem/* 320px */;
+	height: 20rem/* 320px */;
+}
+
+@media (min-width: 1024px) {
+  #particleAnimation {
+    width: 24rem/* 384px */;
+		height: 24rem/* 384px */;
+	}
+}

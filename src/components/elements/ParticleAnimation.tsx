@@ -1,8 +1,6 @@
-import { useCallback, useLayoutEffect, useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 import type { ReactElement } from 'react';
-
-import clsx from 'clsx';
 
 import useBreakpoints from '@hook/useBreakpoints';
 import useFPS from '@hook/useFPS';
@@ -13,11 +11,7 @@ import { deepCopy } from '@helper/object';
 
 import particleJSConfig from '@config/particleJSConfig';
 
-interface IProps {
-  className?: string;
-}
-
-const ParticleAnimation = ({ className }: IProps): ReactElement => {
+const ParticleAnimation = (): ReactElement => {
   const { greaterThan } = useBreakpoints();
 
   const particleJS = useRef<ParticleJS | null>();
@@ -62,7 +56,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   );
 
   return (
-    <div className={clsx(['rounded-full', className])} ref={containerRef}>
+    <div className="rounded-full" id="particleAnimation" ref={containerRef}>
       <canvas ref={canvasRef}></canvas>
     </div>
   );

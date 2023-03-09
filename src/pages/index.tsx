@@ -22,7 +22,7 @@ const Home = (): ReactElement => {
       </Head>
 
       <section className="flex flex-col lg:flex-row items-center justify-around min-h-screen p-8 lg:px-32 lg:py-16">
-        <ParticleAnimation className="w-80 h-80 lg:w-96 lg:h-96" />
+        <ParticleAnimation />
 
         <div className="flex flex-col items-center lg:items-end">
           <Header type={1} className="font-mono text-center lg:text-right mt-8">
