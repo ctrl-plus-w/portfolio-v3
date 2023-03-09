@@ -8,6 +8,7 @@ import useFPS from '@hook/useFPS';
 import ParticleJS from '@class/ParticleJS';
 
 import { deepCopy } from '@helper/object';
+import { px } from '@helper/react';
 
 import particleJSConfig from '@config/particleJSConfig';
 
@@ -31,11 +32,13 @@ const ParticleAnimation = (): ReactElement => {
       // Updating canvas size
       let _particleJSConfig = deepCopy(particleJSConfig);
 
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
+      const size = greaterThan('lg') ? 320 : 384;
 
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+      canvas.style.width = px(size);
+      canvas.style.height = px(size);
+
+      canvas.width = size;
+      canvas.height = size;
 
       if (
         greaterThan('lg') &&
