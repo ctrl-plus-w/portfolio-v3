@@ -8,13 +8,14 @@ interface IProps {
 
 const Loader = ({ className }: IProps): ReactElement => {
   return (
-    <section
-      className={clsx([
-        'fixed h-screen w-screen bg-secondary z-[100]',
-        className
-      ])}
-      id="loader"
-    ></section>
+    <></>
+    // <section
+    //   className={clsx([
+    //     'fixed h-screen w-screen bg-secondary z-[100]',
+    //     className
+    //   ])}
+    //   id="loader"
+    // ></section>
   );
 };
 

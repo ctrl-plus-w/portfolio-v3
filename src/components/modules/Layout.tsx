@@ -33,60 +33,60 @@ interface IProps {
 const Layout = ({ children }: IProps): ReactElement => {
   const { greaterThan } = useBreakpoints();
 
-  useDynamicEffect(() => {
-    const timeline = gsap.timeline();
+  // useDynamicEffect(() => {
+  //   const timeline = gsap.timeline();
 
-    timeline.to('#loader', {
-      opacity: 0,
-      pointerEvents: 'none',
-      delay: 0.5
-    });
+  //   timeline.to('#loader', {
+  //     opacity: 0,
+  //     pointerEvents: 'none',
+  //     delay: 0.5
+  //   });
 
-    timeline
-      .fromTo(
-        '#line1 svg',
-        { strokeDasharray: '2000px', strokeDashoffset: '2000px' },
-        {
-          strokeDashoffset: 0,
-          duration: 2
-        }
-      )
-      .fromTo(
-        '#line2 svg',
-        { strokeDasharray: '2000px', strokeDashoffset: '-2000px' },
-        {
-          strokeDashoffset: 0,
-          duration: 1
-        },
-        '<'
-      )
-      .from(
-        '.separator',
-        {
-          width: 0
-        },
-        '<'
-      )
-      .from(
-        'h1, h2, p, a, button, input, textarea',
-        {
-          opacity: 0,
-          y: '1rem'
-        },
-        '<'
-      )
-      .from(
-        '.menu-icon',
-        {
-          opacity: 0
-        },
-        ''
-      );
+  //   timeline
+  //     .fromTo(
+  //       '#line1 svg',
+  //       { strokeDasharray: '2000px', strokeDashoffset: '2000px' },
+  //       {
+  //         strokeDashoffset: 0,
+  //         duration: 2
+  //       }
+  //     )
+  //     .fromTo(
+  //       '#line2 svg',
+  //       { strokeDasharray: '2000px', strokeDashoffset: '-2000px' },
+  //       {
+  //         strokeDashoffset: 0,
+  //         duration: 1
+  //       },
+  //       '<'
+  //     )
+  //     .from(
+  //       '.separator',
+  //       {
+  //         width: 0
+  //       },
+  //       '<'
+  //     )
+  //     .from(
+  //       'h1, h2, p, a, button, input, textarea',
+  //       {
+  //         opacity: 0,
+  //         y: '1rem'
+  //       },
+  //       '<'
+  //     )
+  //     .from(
+  //       '.menu-icon',
+  //       {
+  //         opacity: 0
+  //       },
+  //       ''
+  //     );
 
-    return () => {
-      timeline.revert();
-    };
-  }, []);
+  //   return () => {
+  //     timeline.revert();
+  //   };
+  // }, []);
 
   return (
     <>
