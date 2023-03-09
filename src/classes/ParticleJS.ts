@@ -47,14 +47,14 @@ class ParticleJS {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
 
-    this.width = canvas.width;
-    this.height = canvas.height;
-
 		this.scale = config.scale || 1;
 		if(this.context) {
-			console.log('Scale is', this.scale);
 			this.context.scale(this.scale, this.scale);
 		}
+
+    this.width = canvas.width / this.scale;
+    this.height = canvas.height/ this.scale;
+
 
     this.particleConfig = {
       minSize: config?.particle?.minSize || 0,
