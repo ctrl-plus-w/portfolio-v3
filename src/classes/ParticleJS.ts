@@ -2,6 +2,8 @@ import Particle from '@class/Particle';
 import Vector from '@class/Vector';
 
 export interface IConfig {
+	scale?: number;
+
   particle?: {
     minSize?: number;
     size?: number;
@@ -24,6 +26,7 @@ class ParticleJS {
 
   width: number;
   height: number;
+	scale: number;
 
   particleConfig: {
     minSize: number;
@@ -46,6 +49,12 @@ class ParticleJS {
 
     this.width = canvas.width;
     this.height = canvas.height;
+
+		this.scale = config.scale || 1;
+		if(this.context) {
+			console.log('Scale is', this.scale);
+			this.context.scale(this.scale, this.scale);
+		}
 
     this.particleConfig = {
       minSize: config?.particle?.minSize || 0,

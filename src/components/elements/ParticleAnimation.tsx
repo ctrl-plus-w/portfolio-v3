@@ -32,13 +32,15 @@ const ParticleAnimation = (): ReactElement => {
       // Updating canvas size
       let _particleJSConfig = deepCopy(particleJSConfig);
 
+      _particleJSConfig.scale = window.devicePixelRatio;
+
       const size = greaterThan('lg') ? 320 : 384;
 
       canvas.style.width = px(size);
       canvas.style.height = px(size);
 
-      canvas.width = size;
-      canvas.height = size;
+      canvas.width = size * _particleJSConfig.scale;
+      canvas.height = size * _particleJSConfig.scale;
 
       if (
         greaterThan('lg') &&

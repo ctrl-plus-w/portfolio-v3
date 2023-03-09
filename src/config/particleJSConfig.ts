@@ -6,6 +6,7 @@ interface IAdditionalConfig {
 
 const particleJSConfig: IConfig & IAdditionalConfig = {
   fps: 120,
+	scale: 3,
   particle: {
     minSize: 4,
     size: 11,
