@@ -43,16 +43,13 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
   };
 
   const updateCanvasSize = (
-    container: HTMLDivElement,
     canvas: HTMLCanvasElement
   ) => {
-    const { width, height } = container.getBoundingClientRect();
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
 
-    canvas.width = width;
-    canvas.height = height;
-
-    canvas.style.width = px(width);
-    canvas.style.height = px(height);
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
   };
 
   const containerRef = useCallback(
@@ -62,10 +59,7 @@ const ParticleAnimation = ({ className }: IProps): ReactElement => {
       // Updating canvas size
       let _particleJSConfig = deepCopy(particleJSConfig);
 
-      canvasRef.current.style.width = '100%';
-      canvasRef.current.style.height = '100%';
-
-      updateCanvasSize(container, canvasRef.current);
+      updateCanvasSize(canvasRef.current);
 
       if (
         greaterThan('lg') &&
