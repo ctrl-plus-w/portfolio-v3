@@ -76,19 +76,14 @@ class ParticleJS {
    * Animation Frame Tick
    */
 	tick() {
-		if (!this.context) return;
+    this.clearCanvas();
 
-		this.context.fillStyle = "#fff000";
-		this.context.fillRect(0, 0, this.width / 2, this.height / 2);
-		this.context.fillRect(this.width / 2, this.height / 2, this.width / 2, this.height / 2);
-    // this.clearCanvas();
+    for (let i = 0; i < this.particles.length; i++) {
+      const particle = this.particles[i];
 
-    // for (let i = 0; i < this.particles.length; i++) {
-    //   const particle = this.particles[i];
-
-    //   this.updateParticle(particle, i);
-    //   this.drawParticle(particle, i);
-    // }
+      this.updateParticle(particle, i);
+      this.drawParticle(particle, i);
+    }
   }
 
   /**
