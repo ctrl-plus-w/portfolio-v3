@@ -165,7 +165,7 @@ const Home = (): ReactElement => {
         <div className="flex flex-col gap-x-16 lg:flex-row lg:mt-14 w-full">
           <Card
             title="Site simple"
-            description="Besoin d'un site pour présenter vôtre commerce ou vos services. Cette solution est pour vous."
+            description="Besoin d'un site pour présenter votre commerce ou vos services. Cette solution est pour vous."
             options={[
               {
                 name: 'Design responsive',
@@ -198,7 +198,7 @@ const Home = (): ReactElement => {
 
           <Card
             title="Site complexe"
-            description="Développement d'une application web, un outils interactif portable et hébergé."
+            description="Développement d'une application web, un outil interactif portable et hébergé."
             options={[
               {
                 name: 'Design responsive',
@@ -222,7 +222,7 @@ const Home = (): ReactElement => {
                 checked: true
               },
               {
-                name: 'Outils de gestion',
+                name: 'Outil de gestion',
                 checked: true
               }
             ]}
@@ -246,7 +246,7 @@ const Home = (): ReactElement => {
 
       <section className="mt-16 mb-11 flex flex-col items-center">
         <p className="text-primary text-2xl font-medium text-center lg:max-w-xl">
-          Une idée en tête ? Besoin d’aide pour vôtre transition digitale ?
+          Une idée en tête ? Besoin d’aide pour votre transition digitale ?
         </p>
 
         <div className="relative my-8 h-16 w-[1.25px] bg-primary">
